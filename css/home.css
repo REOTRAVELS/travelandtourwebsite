@@ -239,11 +239,11 @@
 
 @media (max-width: 768px) {
   #hero {
-    height: clamp(60vh, 60svh, 60svh);
+    height: clamp(70vh, 70svh, 70svh);
     padding: clamp(10px, 2.5vw, 26px);
   }
   .hero-content {
-   margin-top: 60px;
+   margin-top: 65px;
   }
   .hero-scroll-hint {
     bottom: clamp(16px, 3vw, 24px);
