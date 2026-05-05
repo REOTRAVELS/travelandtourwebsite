@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="css/shared.css" />
   <link rel="stylesheet" href="css/home.css" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="preload" href="asset/video2.mp4" as="video" type="video/mp4" />
 </head>
 
 <body>
@@ -31,9 +32,9 @@
 
   <section id="hero">
     <div class="hero-bg-wrap">
-      <video class="hero-video" id="hero-video" autoplay muted loop playsinline disablepictureinpicture preload="auto"
-        webkit-playsinline x5-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="false"
-        poster="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600">
+      <video class="hero-video" id="hero-video" autoplay muted defaultmuted loop playsinline webkit-playsinline
+        x5-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="false" disablepictureinpicture
+        preload="auto" poster="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600">
         <source src="asset/video2.mp4" type="video/mp4" />
       </video>
       <img class="hero-fallback" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=85"
@@ -47,7 +48,7 @@
         the journey.</p>
       <div class="hero-actions hero-reveal">
         <a href="services.html" class="btn btn-gold">Explore Packages</a>
-        <!-- <a href="contact.html" class="btn btn-outline-white">Book Consultation</a> -->
+        <a href="contact.html" class="btn btn-outline-white">Book Consultation</a>
       </div>
     </div>
     <!-- <div class="hero-scroll-hint"><span class="scroll-text">Scroll</span></div> -->
