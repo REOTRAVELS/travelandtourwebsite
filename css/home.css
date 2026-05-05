@@ -116,6 +116,19 @@
   animation: fadeUp 1s 1s both;
 }
 
+@media (max-width: 480px) {
+  .hero-actions {
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin-top: 24px;
+  }
+  
+  .hero-actions .btn {
+    padding: clamp(10px, 2.5vw, 12px) clamp(18px, 4vw, 24px);
+    font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+  }
+}
+
 .hero-search {
   display: flex;
   gap: 10px;
