@@ -109,13 +109,25 @@
 }
 
 
-.hero-actions {
+  .hero-actions {
   display: flex;
   gap: clamp(12px, 2vw, 16px);
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: center;
   margin-top: clamp(24px, 4vw, 32px);
   animation: fadeUp 1s 1s both;
+}
+
+@media (max-width: 480px) {
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  .hero-actions .btn {
+    width: min(280px, 85vw);
+  }
 }
 
 
@@ -227,8 +239,8 @@
 
 @media (max-width: 768px) {
   #hero {
-    height: clamp(90vh, 100svh, 100svh);
-    padding: clamp(20px, 3.5vw, 36px);
+    height: clamp(60vh, 60svh, 60svh);
+    padding: clamp(10px, 2.5vw, 26px);
   }
   
   .hero-scroll-hint {
