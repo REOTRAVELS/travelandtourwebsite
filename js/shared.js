@@ -1,4 +1,64 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  /* ─── HERO VIDEO: BULLETPROOF AUTOPLAY FOR ALL DEVICES ──────────────────
+   * iOS Safari requires: muted + playsinline + webkit-playsinline
+   * Android WebView requires: x5-playsinline attributes (set in HTML)
+   * Low-power mode / data-saver can pause autoplay → we force .play()
+   * We also retry after the preloader hides and on first user interaction.
+   * ─────────────────────────────────────────────────────────────────────── */
+  const heroVideo = document.getElementById("hero-video");
+  if (heroVideo) {
+    // Ensure muted is set programmatically (some browsers reset it)
+    heroVideo.muted = true;
+    heroVideo.volume = 0;
+
+    const tryPlay = () => {
+      if (heroVideo.paused) {
+        heroVideo.play().catch(() => {
+          // Silently swallow — a user gesture listener below will retry
+        });
+      }
+    };
+
+    // Attempt 1: immediate
+    tryPlay();
+
+    // Attempt 2: once metadata loads (fires fast even before full download)
+    heroVideo.addEventListener("loadedmetadata", tryPlay, { once: true });
+
+    // Attempt 3: once enough data is buffered
+    heroVideo.addEventListener("canplay", tryPlay, { once: true });
+
+    // Attempt 4: after preloader clears (1.2 s delay in shared.js)
+    setTimeout(tryPlay, 1400);
+
+    // Attempt 5: on the very first user interaction (tap / scroll / key)
+    // — this unblocks browsers that require a gesture
+    const gestureEvents = ["touchstart", "touchend", "click", "keydown", "scroll"];
+    const onGesture = () => {
+      tryPlay();
+      gestureEvents.forEach((ev) => window.removeEventListener(ev, onGesture));
+    };
+    gestureEvents.forEach((ev) =>
+      window.addEventListener(ev, onGesture, { once: true, passive: true })
+    );
+
+    // Attempt 6: Page Visibility API — resume when tab/app comes back into view
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) tryPlay();
+    });
+
+    // Attempt 7: if the video stalls, nudge it
+    heroVideo.addEventListener("stalled", tryPlay);
+    heroVideo.addEventListener("suspend", () => setTimeout(tryPlay, 300));
+
+    // Fallback: show poster image if video truly can't play
+    heroVideo.addEventListener("error", () => {
+      heroVideo.style.display = "none";
+    });
+  }
+  /* ─── END HERO VIDEO ───────────────────────────────────────────────────── */
+
   const applyTheme = (theme) => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("reo-theme", theme);

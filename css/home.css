@@ -80,16 +80,51 @@
 
 .hero-headline {
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2rem, 7vw, 7.5rem);
-  line-height: 1.05;
+  font-size: clamp(2.6rem, 5.5vw, 7.2rem);
+  line-height: 1.12;
   font-weight: 300;
   color: var(--white);
   animation: fadeUp 1s 0.6s both;
+  word-break: keep-all;
+  hyphens: none;
+  /* Let the text breathe — no forced breaks on large screens */
+  white-space: normal;
 }
+
+/* Each phrase stays on its own line, never wraps mid-word */
+.hero__heading-line {
+  display: block;
+  white-space: nowrap;
+}
+
 
 @media (max-width: 480px) {
   .hero-headline {
-    font-size: clamp(1.8rem, 10vw, 2.6rem);
+    font-size: clamp(2.4rem, 10vw, 3.2rem);
+    line-height: 1.18;
+  }
+}
+
+/* Small phones (≤ 375px) — e.g. iPhone SE, older Androids */
+@media (max-width: 375px) {
+  .hero-headline {
+    font-size: clamp(2rem, 9.5vw, 2.6rem);
+    line-height: 1.2;
+  }
+}
+
+/* Tablets (481px – 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .hero-headline {
+    font-size: clamp(3rem, 6.5vw, 4.5rem);
+    line-height: 1.14;
+  }
+}
+
+/* Tablets landscape / small desktop (769px – 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-headline {
+    font-size: clamp(4rem, 6vw, 5.5rem);
     line-height: 1.1;
   }
 }
