@@ -242,7 +242,9 @@
     height: clamp(60vh, 60svh, 60svh);
     padding: clamp(10px, 2.5vw, 26px);
   }
-  
+  .hero-content {
+   margin-top: 60px;
+  }
   .hero-scroll-hint {
     bottom: clamp(16px, 3vw, 24px);
   }
