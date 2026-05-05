@@ -6,7 +6,7 @@
 }
 
 #hero {
-  height: clamp(90vh, 95svh, 95vh);
+  height: clamp(80vh, 85svh, 85vh);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,6 +54,7 @@
   z-index: 3;
   text-align: center;
   width: 100%;
+  margin-top: 70px;
   padding: 0 clamp(16px, 5vw, 60px);
   display: flex;
   flex-direction: column;
