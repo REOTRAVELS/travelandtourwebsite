@@ -1,0 +1,294 @@
+.main-services {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+}
+
+.svc-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 5vw, 80px);
+  align-items: center;
+  margin-bottom: clamp(56px, 8vw, 100px);
+}
+.svc-block.reverse {
+  direction: rtl;
+}
+.svc-block.reverse > * {
+  direction: ltr;
+}
+@media (max-width: 768px) {
+  .svc-block,
+  .svc-block.reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+}
+
+.svc-block-img {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.svc-block-img img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.svc-block-img:hover img {
+  transform: scale(1.04);
+}
+
+.svc-block-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.svc-block-icon {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+.svc-block-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--white);
+}
+.svc-block-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.svc-block-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: clamp(0.84rem, 1.4vw, 0.95rem);
+  line-height: 1.8;
+}
+.svc-block-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.svc-block-list li {
+  font-size: clamp(0.8rem, 1.3vw, 0.9rem);
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.svc-block-list li::before {
+  content: "✦";
+  color: var(--gold);
+  font-size: 0.65rem;
+  flex-shrink: 0;
+}
+
+.mini-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: clamp(12px, 2vw, 22px);
+}
+.mini-svc-card {
+  padding: clamp(20px, 3vw, 30px);
+}
+.mini-icon {
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  display: block;
+  margin-bottom: 12px;
+}
+.mini-svc-card h4 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.mini-svc-card p {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: clamp(0.76rem, 1.2vw, 0.84rem);
+  line-height: 1.7;
+}
+
+.packages-section {
+  background: var(--navy);
+}
+
+.pkg-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(32px, 5vw, 52px);
+  margin-top: 30px;
+}
+.pkg-tab {
+  padding: 10px 24px;
+  border-radius: 40px;
+  border: 1.5px solid var(--glass-border);
+  background: var(--glass);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: clamp(0.76rem, 1.2vw, 0.86rem);
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.pkg-tab.active,
+.pkg-tab:hover {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+  font-weight: 700;
+}
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: clamp(16px, 2.5vw, 28px);
+}
+.pkg-card {
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all 0.4s;
+}
+.pkg-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(229, 57, 53, 0.4);
+  box-shadow: var(--shadow-gold);
+}
+.pkg-img-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.pkg-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.5s;
+}
+.pkg-card:hover .pkg-img {
+  transform: scale(1.07);
+}
+.pkg-season-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 5px 14px;
+  border-radius: 40px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.pkg-season-badge.newyear {
+  background: #1a237e;
+  color: var(--gold-light);
+  border: 1px solid rgba(229, 57, 53, 0.3);
+}
+.pkg-season-badge.valentine {
+  background: #880e4f;
+  color: #fce4ec;
+  border: 1px solid rgba(255, 100, 150, 0.3);
+}
+.pkg-season-badge.christmas {
+  background: #1b5e20;
+  color: #c8e6c9;
+  border: 1px solid rgba(100, 200, 100, 0.3);
+}
+.pkg-hot-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 4px 11px;
+  border-radius: 40px;
+  font-size: 0.66rem;
+  font-weight: 700;
+}
+.pkg-body {
+  padding: clamp(18px, 2.5vw, 26px);
+}
+.pkg-season-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+.pkg-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.pkg-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.pkg-meta span {
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+.pkg-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.pkg-price-row strong {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--gold);
+}
+.pkg-price-row span {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+.pkg-features {
+  list-style: none;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.pkg-features li {
+  font-size: clamp(0.76rem, 1.2vw, 0.84rem);
+  color: rgba(255, 255, 255, 0.62);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pkg-features li::before {
+  content: "✓";
+  color: var(--gold);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.pkg-desc {
+  font-size: clamp(0.76rem, 1.2vw, 0.84rem);
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.booking-cta-section {
+  background: linear-gradient(135deg, var(--royal) 0%, var(--navy-mid) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.booking-cta-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.booking-cta-section .container {
+  position: relative;
+  z-index: 1;
+}

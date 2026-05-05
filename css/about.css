@@ -1,0 +1,227 @@
+.about-intro {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 88px);
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-img-frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.about-img-frame img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+}
+.about-img-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 31, 68, 0.85);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--glass-border);
+  display: flex;
+  justify-content: space-around;
+  padding: clamp(16px, 2.5vw, 24px);
+}
+.about-stat {
+  text-align: center;
+}
+.about-stat strong {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+}
+.about-stat span {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.1em;
+  margin-top: 3px;
+  display: block;
+}
+
+.about-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.body-text {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: clamp(0.85rem, 1.4vw, 0.96rem);
+  line-height: 1.82;
+}
+.about-badges {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+.about-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: clamp(0.74rem, 1.2vw, 0.84rem);
+  color: rgba(255, 255, 255, 0.75);
+}
+.badge-icon {
+  font-size: 1.1rem;
+}
+
+.mv-section {
+  background: var(--navy);
+}
+.mv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: clamp(16px, 2.5vw, 28px);
+}
+.mv-card {
+  padding: clamp(28px, 4vw, 44px);
+  text-align: center;
+}
+.mv-icon {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  margin-bottom: 18px;
+}
+.mv-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.mv-text {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: clamp(0.82rem, 1.3vw, 0.92rem);
+  line-height: 1.75;
+}
+
+.timeline-section {
+  background: linear-gradient(180deg, var(--navy-mid) 0%, var(--navy) 100%);
+}
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 0;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  transform: translateX(-50%);
+}
+.tl-item {
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr;
+  gap: 0 clamp(16px, 2.5vw, 32px);
+  align-items: center;
+  margin-bottom: clamp(28px, 4vw, 48px);
+  position: relative;
+}
+.tl-item .tl-year {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 600;
+  color: var(--gold);
+  text-align: right;
+  line-height: 1;
+}
+.tl-item .tl-content {
+  grid-column: 3;
+}
+.tl-item.right .tl-year {
+  grid-column: 3;
+  text-align: left;
+  order: 3;
+}
+.tl-item.right .tl-dot {
+  grid-column: 2;
+  order: 2;
+}
+.tl-item.right .tl-content {
+  grid-column: 1;
+  order: 1;
+}
+.tl-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--navy-mid);
+  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.3);
+  margin: auto;
+  flex-shrink: 0;
+  grid-column: 2;
+}
+.tl-content {
+  padding: clamp(16px, 2.5vw, 24px);
+}
+.tl-content h4 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 7px;
+}
+.tl-content p {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: clamp(0.78rem, 1.2vw, 0.86rem);
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .timeline::before {
+    left: 14px;
+  }
+  .tl-item,
+  .tl-item.right {
+    grid-template-columns: 28px 1fr;
+    grid-template-rows: auto auto;
+    gap: 0 12px;
+  }
+  .tl-item .tl-year,
+  .tl-item.right .tl-year {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+    font-size: 1.3rem;
+    order: 1;
+    padding-bottom: 8px;
+  }
+  .tl-item .tl-dot,
+  .tl-item.right .tl-dot {
+    grid-column: 1;
+    grid-row: 1;
+    order: 0;
+    align-self: start;
+    margin-top: 4px;
+  }
+  .tl-item .tl-content,
+  .tl-item.right .tl-content {
+    grid-column: 2;
+    grid-row: 2;
+    order: 2;
+  }
+}

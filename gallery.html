@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Gallery — Inspiring Journeys & Destinations | REO Travels</title>
+  <meta name="description"
+    content="Explore stunning photos from REO Travels clients' adventures across 25+ countries. Get inspired for your next travel destination." />
+  <meta name="keywords"
+    content="travel gallery, travel photos, destination images, travel inspiration, adventure photos" />
+  <meta name="author" content="REO Travels &amp; Tour" />
+  <meta property="og:title" content="Travel Gallery" />
+  <meta property="og:description"
+    content="Explore stunning travel photos and client adventures from across the globe." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://reotravels.com/gallery.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="REO Travels Gallery" />
+  <link rel="icon" href="../asset/logo.png?v=1" type="image/png" />
+  <link rel="apple-touch-icon" href="../asset/logo.png" />
+  <link rel="stylesheet" href="../css/shared.css" />
+  <link rel="stylesheet" href="../css/gallery.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+</head>
+
+<body>
+  <div id="preloader-placeholder"></div>
+  <div id="navbar-placeholder"></div>
+
+  <section class="page-hero">
+    <div class="page-hero-bg"
+      style="background-image:url('asset/gallery.jfif')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content" data-aos="fade-up">
+      <span class="section-label">Visual Journeys</span>
+      <h1 class="section-title">Our <em>Gallery</em></h1>
+      <p class="section-sub" id="sub">A curated collection of breathtaking moments from around the world.</p>
+    </div>
+  </section>
+
+  <!-- <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-inner">
+      <span>Dubai</span><span>Qatar</span><span>London</span><span>Paris</span><span>Maldives</span>
+      <span>Brazil</span><span>Canada</span><span>Bali</span><span>Istanbul</span><span>Tokyo</span>
+      <span>Dubai</span><span>Qatar</span><span>London</span><span>Paris</span><span>Maldives</span>
+      <span>Brazil</span><span>Canada</span><span>Bali</span><span>Istanbul</span><span>Tokyo</span>
+    </div>
+  </div> -->
+
+  <section class="section-pad gallery-section">
+    <div class="container">
+      <div class="section-header text-center" data-aos="fade-up">
+        <span class="section-label">World Through Our Lens</span>
+        <h2 class="section-title" style="margin-bottom: 40px;">Moments That <em>Inspire</em></h2>
+      </div>
+
+      <!-- <div class="gallery-filters" data-aos="fade-up" data-aos-delay="80">
+        <button class="gf-btn active" data-filter="all">All</button>
+        <button class="gf-btn" data-filter="destinations">Destinations</button>
+        <button class="gf-btn" data-filter="luxury">Luxury</button>
+        <button class="gf-btn" data-filter="culture">Culture</button>
+        <button class="gf-btn" data-filter="nature">Nature</button>
+      </div> -->
+
+      <div class="gallery-masonry" data-aos="fade-up" data-aos-delay="120">
+
+        <div class="g-item" data-filter="destinations" data-lb="asset/1.jpg">
+          <img src="asset/1.jpg" alt="Sunset city skyline" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>City Sunset</p>
+          </div>
+        </div>
+
+        <div class="g-item tall" data-filter="nature" data-lb="asset/2.jpg">
+          <img src="asset/2.jpg" alt="Mountain landscape" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Mountain Escape</p>
+          </div>
+        </div>
+
+        <div class="g-item" data-filter="destinations" data-lb="asset/3.jpg">
+          <img src="asset/3.jpg" alt="City landmark at dusk" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Urban Adventure</p>
+          </div>
+        </div>
+
+        <div class="g-item" data-filter="luxury" data-lb="asset/4.jpg">
+          <img src="asset/4.jpg" alt="Luxury resort pool" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Luxury Retreat</p>
+          </div>
+        </div>
+
+        <div class="g-item wide" data-filter="culture" data-lb="asset/5.jpg">
+          <img src="asset/5.jpg" alt="Night city lights" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Night Market</p>
+          </div>
+        </div>
+
+        <div class="g-item" data-filter="destinations" data-lb="asset/6.jpg">
+          <img src="asset/6.jpg" alt="Historic city street" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Historic Streets</p>
+          </div>
+        </div>
+
+        <div class="g-item tall" data-filter="nature" data-lb="asset/7.jpg">
+          <img src="asset/7.jpg" alt="Tropical beach scene" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Tropical Shores</p>
+          </div>
+        </div>
+
+        <div class="g-item" data-filter="culture" data-lb="asset/8.jpg">
+          <img src="asset/8.jpg" alt="Coastal city evening" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Coastal Evenings</p>
+          </div>
+        </div>
+
+        <div class="g-item" data-filter="luxury" data-lb="asset/9.jpg">
+          <img src="asset/9.jpg" alt="Modern skyline" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Modern Skyline</p>
+          </div>
+        </div>
+
+        <div class="g-item" data-filter="nature" data-lb="asset/10.jpg">
+          <img src="asset/10.jpg" alt="Beach and palm trees" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Beach Paradise</p>
+          </div>
+        </div>
+
+        <div class="g-item wide" data-filter="destinations" data-lb="asset/11.jpg">
+          <img src="asset/11.jpg" alt="Sunset over water" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Sunset Harbor</p>
+          </div>
+        </div>
+
+        <div class="g-item" data-filter="culture" data-lb="asset/12.jpg">
+          <img src="asset/12.jpg" alt="Elegant city architecture" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>City Architecture</p>
+          </div>
+        </div>
+
+        <div class="g-item" data-filter="nature" data-lb="asset/13.jpg">
+          <img src="asset/13.jpg" alt="Cliffside coast" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Coastal Cliffs</p>
+          </div>
+        </div>
+
+        <div class="g-item tall" data-filter="luxury" data-lb="asset/14.jpg">
+          <img src="asset/14.jpg" alt="Resort lounge" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Resort Lounge</p>
+          </div>
+        </div>
+
+        <div class="g-item" data-filter="destinations" data-lb="asset/15.jpg">
+          <img src="asset/15.jpg" alt="City skyline reflection" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Skyline Reflection</p>
+          </div>
+        </div>
+
+        <div class="g-item" data-filter="culture" data-lb="asset/16.jpg">
+          <img src="asset/16.jpg" alt="Cultural street scene" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Street Culture</p>
+          </div>
+        </div>
+
+        <div class="g-item" data-filter="nature" data-lb="asset/17.jpg">
+          <img src="asset/17.jpg" alt="Island coastline" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Island Coast</p>
+          </div>
+        </div>
+
+        <div class="g-item wide" data-filter="luxury" data-lb="asset/18.jpg">
+          <img src="asset/18.jpg" alt="Luxury travel moment" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Luxury Moment</p>
+          </div>
+        </div>
+
+        <div class="g-item" data-filter="destinations" data-lb="asset/19.jpg">
+          <img src="asset/19.jpg" alt="Night cityscape" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Night Cityscape</p>
+          </div>
+        </div>
+
+        <div class="g-item tall" data-filter="nature" data-lb="asset/20.jpg">
+          <img src="asset/20.jpg" alt="Golden beach sunset" loading="lazy" />
+          <div class="g-overlay"><span>🔍</span>
+            <p>Golden Sunset</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="lightbox" role="dialog" aria-modal="true">
+    <button id="lb-close" aria-label="Close lightbox">&times;</button>
+    <img id="lb-img" src="" alt="Gallery fullsize" />
+  </div>
+
+  <div id="footer-placeholder"></div>
+  <div id="wa-placeholder"></div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/shared.js"></script>
+  <script>
+    document.querySelectorAll('.gf-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.gf-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.g-item').forEach(item => {
+          const show = filter === 'all' || item.dataset.filter === filter;
+          item.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

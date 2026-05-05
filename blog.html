@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Blog &amp; Tips — Visa Guides, Destination Guides & Travel Advice</title>
+  <meta name="description"
+    content="Read expert travel tips, visa guides, destination recommendations & insider advice from REO Travels blog. Plan your next adventure today." />
+  <meta name="keywords"
+    content="travel blog, travel tips, destination guides, visa guides, travel advice, travel stories" />
+  <meta name="author" content="REO Travels &amp; Tour" />
+  <meta property="og:title" content="Travel Blog &amp; Tips" />
+  <meta property="og:description" content="Expert travel guides, visa tips, and destination recommendations." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://reotravels.com/blog.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="REO Travels Blog" />
+  <link rel="icon" href="../asset/logo.png?v=1" type="image/png" />
+  <link rel="apple-touch-icon" href="../asset/logo.png" />
+  <link rel="stylesheet" href="../css/shared.css" />
+  <link rel="stylesheet" href="../css/blog.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <style>
+    /* Blog modal styles */
+    .blog-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 22, 48, 0.96);
+      z-index: 98000;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s;
+      overflow-y: auto;
+      padding: clamp(16px, 4vw, 48px);
+    }
+
+    [data-theme="light"] .blog-modal-overlay {
+      background: rgba(13, 31, 60, 0.95);
+    }
+
+    .blog-modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .blog-modal {
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      max-width: 780px;
+      width: 100%;
+      padding: clamp(28px, 5vw, 56px);
+      position: relative;
+      margin: auto;
+      border: 1px solid var(--card-border);
+      animation: modalIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    @keyframes modalIn {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+
+      to {
+        transform: none;
+        opacity: 1;
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .modal-close:hover {
+      background: var(--gold);
+      color: #0a1f44;
+      border-color: var(--gold);
+    }
+
+    .modal-tag {
+      font-size: .65rem;
+      letter-spacing: .28em;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .modal-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      color: var(--text-primary);
+      line-height: 1.25;
+      margin-bottom: 18px;
+      font-weight: 400;
+    }
+
+    .modal-meta {
+      display: flex;
+      gap: 16px;
+      color: var(--text-muted);
+      font-size: .78rem;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .modal-img {
+      width: 100%;
+      border-radius: var(--radius-md);
+      margin-bottom: 28px;
+      aspect-ratio: 16/7;
+      object-fit: cover;
+    }
+
+    .modal-body {
+      color: var(--text-secondary);
+      font-size: clamp(.85rem, 1.4vw, .96rem);
+      line-height: 1.85;
+    }
+
+    .modal-body p {
+      margin-bottom: 16px;
+    }
+
+    .modal-body h3 {
+      font-family: "Playfair Display", serif;
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      margin: 24px 0 10px;
+    }
+
+    .modal-body ul {
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    .modal-body ul li {
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+    }
+
+    .modal-cta {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .modal-cta p {
+      color: var(--text-secondary);
+      font-size: .88rem;
+      flex: 1 1 200px;
+    }
+
+    .blog-card {
+      cursor: pointer;
+    }
+
+    .blog-featured {
+      cursor: pointer;
+    }
+
+    /* Skeleton loader */
+    .skel {
+      background: rgba(255, 255, 255, .06);
+      border-radius: 8px;
+      animation: shimmer 1.4s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+
+      0%,
+      100% {
+        opacity: .5
+      }
+
+      50% {
+        opacity: 1
+      }
+    }
+
+    .skel-feat {
+      height: 320px;
+      margin-bottom: 40px;
+    }
+
+    .skel-card {
+      height: 280px;
+    }
+
+    /* Empty state */
+    .blog-empty {
+      text-align: center;
+      padding: 80px 20px;
+      color: rgba(255, 255, 255, .3);
+    }
+
+    .blog-empty h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      color: rgba(255, 255, 255, .45);
+    }
+
+    .blog-empty p {
+      font-size: .875rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="preloader-placeholder"></div>
+  <div id="navbar-placeholder"></div>
+
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('asset/blog.jfif')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content" data-aos="fade-up">
+      <span class="section-label">Travel Insights</span>
+      <h1 class="section-title">Our <em>Blog</em></h1>
+      <p class="section-sub" id="sub">Expert travel tips, destination guides, visa advice, and stories from around the world.</p>
+    </div>
+  </section>
+
+  <!-- <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-inner">
+      <span>Travel Tips</span><span>Destination Guides</span><span>Visa Advice</span><span>Travel
+        Stories</span><span>Luxury Stays</span>
+      <span>Travel Tips</span><span>Destination Guides</span><span>Visa Advice</span><span>Travel
+        Stories</span><span>Luxury Stays</span>
+      <span>Travel Tips</span><span>Destination Guides</span><span>Visa Advice</span><span>Travel
+        Stories</span><span>Luxury Stays</span>
+    </div>
+  </div> -->
+
+  <section class="section-pad blog-section">
+    <div class="container">
+      <div class="section-header text-center" data-aos="fade-up">
+        <span class="section-label">From Our Experts</span>
+        <h2 class="section-title">Travel Knowledge &amp; <em>Inspiration</em></h2>
+        <p class="section-sub" id="sub">Expert guides, visa tips, and destination inspiration. Click any article to read in full.
+        </p>
+      </div>
+
+      <!-- Loading skeletons shown while Firebase loads -->
+      <div id="blog-loading">
+        <div class="skel skel-feat"></div>
+        <div class="blog-grid">
+          <div class="skel skel-card"></div>
+          <div class="skel skel-card"></div>
+          <div class="skel skel-card"></div>
+        </div>
+      </div>
+
+      <!-- Real content injected here by Firebase -->
+      <div id="blog-content" style="display:none">
+        <div class="blog-featured" id="blog-featured" data-aos="fade-up" data-aos-delay="80"></div>
+        <div class="blog-grid" id="blog-grid"></div>
+      </div>
+
+      <!-- Empty state -->
+      <div id="blog-empty" style="display:none">
+        <div class="blog-empty">
+          <h3>No posts yet</h3>
+          <p>New articles are on their way — check back soon.</p>
+        </div>
+      </div>
+
+      <!-- Modals injected dynamically -->
+      <div id="blog-modals"></div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <div id="wa-placeholder"></div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/shared.js"></script>
+
+  <!-- Firebase + Blog Renderer -->
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+    import { getFirestore, collection, query, orderBy, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+    // ── Firebase config (hardcoded) ──────────────────────────────────
+    const firebaseConfig = {
+      apiKey: "AIzaSyADn-1fbk6-pzC6fWFWOUm0luHyOIj8yRg",
+      authDomain: "reo-travels-blog.firebaseapp.com",
+      projectId: "reo-travels-blog",
+      storageBucket: "reo-travels-blog.firebasestorage.app",
+      messagingSenderId: "432465752288",
+      appId: "1:432465752288:web:fc0351c16a09d114252085",
+      measurementId: "G-JBVX12GJZQ"
+    };
+
+    const app = initializeApp(firebaseConfig, 'blog-reader');
+    const db = getFirestore(app);
+
+    function esc(s) {
+      return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+    function fmtDate(ts) {
+      if (!ts) return '';
+      const d = ts.toDate ? ts.toDate() : new Date(ts);
+      return d.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
+    }
+
+    function buildModalBody(sections) {
+      return (sections || []).map(s => {
+        if (s.type === 'heading') return `<h3>${esc(s.content)}</h3>`;
+        if (s.type === 'paragraph') return `<p>${esc(s.content)}</p>`;
+        if (s.type === 'bullets') return `<ul>${(s.items || []).map(i => `<li>${esc(i)}</li>`).join('')}</ul>`;
+        return '';
+      }).join('');
+    }
+
+    function renderPosts(posts) {
+      document.getElementById('blog-loading').style.display = 'none';
+
+      if (!posts.length) {
+        document.getElementById('blog-empty').style.display = 'block';
+        return;
+      }
+
+      document.getElementById('blog-content').style.display = 'block';
+
+      const featured = posts.find(p => p.featured) || posts[0];
+      const grid = posts.filter(p => p.id !== featured.id);
+
+      // Featured
+      const featEl = document.getElementById('blog-featured');
+      featEl.dataset.modal = featured.id;
+      featEl.innerHTML = `
+        <div class="bf-img-wrap">
+          ${featured.image ? `<img src="${esc(featured.image)}" alt="${esc(featured.title)}"/>` : ''}
+        </div>
+        <div class="bf-content">
+          <span class="blog-tag">✦ Featured</span>
+          <h2 class="bf-title">${esc(featured.title)}</h2>
+          <p class="bf-excerpt">${esc(featured.excerpt)}</p>
+          <div class="blog-meta">
+            <span>📅 ${fmtDate(featured.createdAt)}</span>
+            ${featured.readtime ? `<span>📖 ${esc(featured.readtime)}</span>` : ''}
+            <span class="blog-read-more">Read Full Article →</span>
+          </div>
+        </div>`;
+
+      // Grid
+      document.getElementById('blog-grid').innerHTML = grid.map(p => `
+        <div class="blog-card glass-card" data-modal="${p.id}">
+          <div class="bc-img-wrap">
+            ${p.image ? `<img class="bc-img" src="${esc(p.image)}" alt="${esc(p.title)}"/>` : ''}
+          </div>
+          <div class="bc-body">
+            <h3 class="bc-title">${esc(p.title)}</h3>
+            <p class="bc-excerpt">${esc(p.excerpt)}</p>
+            <div class="blog-meta">
+              <span>📅 ${fmtDate(p.createdAt)}</span>
+              <span class="blog-read-more">Read More →</span>
+            </div>
+          </div>
+        </div>`).join('');
+
+      // Modals
+      document.getElementById('blog-modals').innerHTML = posts.map(p => `
+        <div class="blog-modal-overlay" id="modal-${p.id}" role="dialog" aria-modal="true">
+          <div class="blog-modal">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            ${p.category ? `<span class="modal-tag">${esc(p.category)}</span>` : ''}
+            <h2 class="modal-title">${esc(p.title)}</h2>
+            <div class="modal-meta">
+              <span>📅 ${fmtDate(p.createdAt)}</span>
+              ${p.readtime ? `<span>📖 ${esc(p.readtime)}</span>` : ''}
+              <span>✍️ REO Travels Team</span>
+            </div>
+            ${p.image ? `<img class="modal-img" src="${esc(p.image)}" alt="${esc(p.title)}"/>` : ''}
+            <div class="modal-body">${buildModalBody(p.sections)}</div>
+            ${(p.ctaText || p.ctaBtn) ? `
+            <div class="modal-cta">
+              ${p.ctaText ? `<p>${esc(p.ctaText)}</p>` : ''}
+              ${p.ctaBtn ? `<a href="contact.html" class="btn btn-gold">${esc(p.ctaBtn)}</a>` : ''}
+            </div>` : ''}
+          </div>
+        </div>`).join('');
+
+      // Bind modal open/close
+      document.querySelectorAll('[data-modal]').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const m = document.getElementById('modal-' + trigger.dataset.modal);
+          if (m) { m.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        });
+      });
+      document.querySelectorAll('.modal-close').forEach(btn => {
+        btn.addEventListener('click', () => {
+          btn.closest('.blog-modal-overlay').classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+      document.querySelectorAll('.blog-modal-overlay').forEach(el => {
+        el.addEventListener('click', e => {
+          if (e.target === el) { el.classList.remove('open'); document.body.style.overflow = ''; }
+        });
+      });
+
+      if (window.AOS) AOS.refresh();
+    }
+
+    // Live listener — updates instantly when posts change
+    const q = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
+    onSnapshot(q, snap => {
+      const posts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      renderPosts(posts);
+    }, err => {
+      console.error('Blog load error:', err);
+      document.getElementById('blog-loading').style.display = 'none';
+      document.getElementById('blog-empty').style.display = 'block';
+    });
+
+    // ESC key closes modal
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.blog-modal-overlay').forEach(m => m.classList.remove('open'));
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+</body>
+
+</html>
