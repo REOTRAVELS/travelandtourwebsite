@@ -54,10 +54,13 @@
 </nav>
 <div class="mobile-menu">
   <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">✕</button>
-  ${mobileLinksHTML()}
-  <button class="mobile-theme-btn" id="mobile-theme-btn">
-    <span id="mobile-theme-icon">☀️</span> Switch to Light Mode
-  </button>
+  <div class="mobile-menu-inner">
+    ${mobileLinksHTML()}
+    <button class="mobile-theme-btn" id="mobile-theme-btn">
+      <span id="mobile-theme-icon">☀️</span> Switch to Light Mode
+    </button>
+  </div>
+  <span class="mobile-menu-tagline">Birthing Travel Dreams ✦ Since 2022</span>
 </div>`;
   }
 
