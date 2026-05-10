@@ -38,7 +38,7 @@
     navTarget.outerHTML = `
 <nav id="navbar">
   <a class="nav-logo" href="${resolveHref("../index.html")}">
-    <img src="${logoPath}" alt="REO Travels & Tour Logo"/>
+    <img src="${logoPath}" alt="REO Travels & Tours Logo"/>
   </a>
   <ul class="nav-links">${navLinksHTML()}</ul>
   <div style="display:flex;align-items:center;gap:12px;">
@@ -113,7 +113,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2025 REO Travels &amp; Tour. All rights reserved.</p>
+    <p>&copy; 2025 REO Travels &amp; Tours. All rights reserved.</p>
     <div style="display:flex;gap:18px;flex-wrap:wrap;">
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms &amp; Conditions</a>
@@ -124,7 +124,7 @@
 
   const waTarget = document.getElementById("wa-placeholder");
   if (waTarget) {
-    waTarget.outerHTML = `<a href="https://wa.me/2348172926565?text=Hello%20REO%20Travels%20%26%20Tour%2C%20I%20want%20to%20make%20an%20enquiry" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"></a>`;
+    waTarget.outerHTML = `<a href="https://wa.me/2348172926565?text=Hello%20REO%20Travels%20%26%20Tours%2C%20I%20want%20to%20make%20an%20enquiry" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"></a>`;
   }
 
   const preTarget = document.getElementById("preloader-placeholder");
