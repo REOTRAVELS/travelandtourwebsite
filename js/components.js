@@ -74,7 +74,7 @@
       <a class="nav-logo" href="${base}index.html">
         <img src="${isRoot ? "asset/logo.png" : "../asset/logo.png"}" alt="REO Travels Logo" style="height:60px;"/>
       </a>
-      <p style="margin-top:12px;">Birthing Travel Dreams since 2022. Your premier gateway to extraordinary destinations across 25+ countries.</p>
+      <p style="margin-top:12px;">Birthing Travel Dreams since 2022. Your premier gateway to extraordinary destinations across 30+ countries.</p>
       <div class="footer-socials">
         <a href="https://www.instagram.com/reo_travels?igsh=cHVzanJmNDMyM3k0&utm_source=qr" class="footer-social-icon" aria-label="Instagram"> <img src="asset/ig.png"/></a>
         <a href="https://www.facebook.com/share/185pypd2Cn/?mibextid=wwXIfr" class="footer-social-icon" aria-label="Facebook"><img src="asset/face.png"/></a>
