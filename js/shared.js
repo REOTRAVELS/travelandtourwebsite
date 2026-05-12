@@ -230,43 +230,97 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ── Contact Form — validated + spam-protected ─────────────────────────────
   const contactForm = document.getElementById("contact-form");
   if (contactForm) {
+
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbynu031Rtu4SEjgf2UBHcAaazPTMzCFjYh1tCV6-ktB01Fc1_yQTJul74iC_wM95K-JxQ/exec";
+    // Must match SECRET_TOKEN in your Apps Script CONFIG
+    const SECRET_TOKEN    = "REO-FORM-2025-xK9mP3qL";
+
+    // Helpers
+    const field  = (name) => contactForm.querySelector(`[name="${name}"]`);
+    const val    = (name) => (field(name)?.value || "").trim();
+
+    function showError(msg) {
+      const el = document.getElementById("form-error");
+      if (!el) return;
+      el.textContent = "❌ " + msg;
+      el.classList.add("show");
+    }
+    function clearFeedback() {
+      document.getElementById("form-success")?.classList.remove("show");
+      document.getElementById("form-error")?.classList.remove("show");
+    }
+    function highlightField(name, msg) {
+      const el = field(name);
+      if (el) {
+        el.style.borderColor = "#ff6b6b";
+        el.focus();
+        el.addEventListener("input", () => { el.style.borderColor = ""; }, { once: true });
+      }
+      showError(msg);
+    }
+
     contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const btn = contactForm.querySelector(".btn-submit");
-      const success = document.getElementById("form-success");
-      const error = document.getElementById("form-error");
-      btn.textContent = "Sending…";
-      btn.disabled = true;
-      if (error) error.classList.remove("show");
+      clearFeedback();
 
-      const APPS_SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfycbzObXgp3h-lKoA9Hr_ioLhjLpI3WRGfGRHxWPRHpyBKKL_oiOAnMXLKvb8G9stxeeAiyg/exec";
-      const payload = Object.fromEntries(new FormData(contactForm).entries());
+      // ── CLIENT-SIDE VALIDATION ──────────────────────────────────────────
+
+      const name    = val("from_name");
+      const email   = val("reply_to");
+      const message = val("message");
+
+      if (!name || name.length < 2) {
+        highlightField("from_name", "Please enter your full name.");
+        return;
+      }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        highlightField("reply_to", "Please enter a valid email address.");
+        return;
+      }
+      if (!message || message.length < 10) {
+        highlightField("message", "Please write a message (at least 10 characters).");
+        return;
+      }
+      const wordCount = message.split(/\s+/).filter(w => w.length > 0).length;
+      if (wordCount < 3) {
+        highlightField("message", "Please write at least a short sentence in your message.");
+        return;
+      }
+
+      // ── SUBMIT ─────────────────────────────────────────────────────────
+
+      const btn     = contactForm.querySelector(".btn-submit");
+      btn.textContent = "Sending…";
+      btn.disabled    = true;
+
+      const payload = {
+        _token     : SECRET_TOKEN,          // ← secret checked server-side
+        from_name  : name,
+        reply_to   : email,
+        phone      : val("phone"),
+        service    : val("service"),
+        destination: val("destination"),
+        message    : message,
+      };
 
       try {
         await fetch(APPS_SCRIPT_URL, {
-          method: "POST",
+          method : "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-          mode: "no-cors",
+          body   : JSON.stringify(payload),
+          mode   : "no-cors",          // Apps Script requires no-cors
         });
-        success.classList.add("show");
+        document.getElementById("form-success")?.classList.add("show");
         contactForm.reset();
       } catch (err) {
-        if (error) error.classList.add("show");
-        else {
-          success.classList.add("show");
-          contactForm.reset();
-        }
+        showError("Something went wrong. Please try WhatsApp or email us directly.");
       } finally {
         btn.textContent = "Send Message →";
-        btn.disabled = false;
-        setTimeout(() => {
-          success.classList.remove("show");
-          if (error) error.classList.remove("show");
-        }, 7000);
+        btn.disabled    = false;
+        setTimeout(clearFeedback, 7000);
       }
     });
   }
