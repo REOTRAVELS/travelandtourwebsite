@@ -153,7 +153,7 @@
 }
 .pkg-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(229, 57, 53, 0.4);
+  border-color: rgba(255, 193, 7, 0.4);
   box-shadow: var(--shadow-gold);
 }
 .pkg-img-wrap {
@@ -162,8 +162,8 @@
 }
 .pkg-img {
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: clamp(160px, 22vw, 220px);
+  object-fit: cover;
   display: block;
   transition: transform 0.5s;
 }
@@ -183,7 +183,7 @@
 .pkg-season-badge.newyear {
   background: #1a237e;
   color: var(--gold-light);
-  border: 1px solid rgba(229, 57, 53, 0.3);
+  border: 1px solid rgba(255, 193, 7, 0.3);
 }
 .pkg-season-badge.valentine {
   background: #880e4f;
