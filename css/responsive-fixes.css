@@ -1,21 +1,44 @@
 /* =========================================================
-   RESPONSIVE FIXES — load this AFTER all your other CSS files
-   (after style.css / hero.css / etc.) so it can override them.
-   Covers: navbar overflow, hero search bar, headline sizing,
-   and general small-screen safety.
+   RESPONSIVE FIXES — load this LAST, after shared.css and
+   every page CSS, so it can override them.
+   Replaces the previous responsive-fixes.css.
    ========================================================= */
 
-/* Prevent any accidental horizontal scroll site-wide */
-html, body {
+/* ---------- GLOBAL ---------- */
+/* Anchor links (#services etc.) should land below the fixed navbar */
+html {
+  scroll-padding-top: calc(var(--nav-h, 72px) + 8px);
+}
+/* NOTE: the old rule put overflow-x:hidden on BOTH html and body. That turns
+   body into its own scroll container and causes jumpy scrolling on iOS.
+   shared.css already sets it on body, which is enough. */
+body {
   max-width: 100%;
-  overflow-x: hidden;
+}
+iframe,
+video,
+svg {
+  max-width: 100%;
+}
+.map-card iframe {
+  width: 100%;
 }
 
 /* ---------- NAVBAR ---------- */
-@media (max-width: 768px) {
+/* The desktop menu (links + 2 buttons + theme toggle) does not fit on
+   tablets, so switch to the hamburger earlier than 768px.
+   If your desktop nav still fits down to ~900px, lower this number. */
+@media (max-width: 1100px) {
+  .nav-links,
+  .nav-cta,
   .nav-academy-btn {
-    display: none !important; /* was left visible, causing overflow on mobile */
+    display: none !important;
   }
+  .hamburger {
+    display: flex;
+  }
+}
+@media (max-width: 768px) {
   #navbar {
     padding: 0 16px;
   }
@@ -23,61 +46,71 @@ html, body {
     font-size: 0.85rem;
   }
 }
-
 @media (max-width: 380px) {
   .nav-logo img {
     height: 38px;
   }
   .nav-logo-text {
-    display: none; /* logo mark only on very small screens */
+    display: none;
   }
 }
+/* bigger tap target for the hamburger (was ~32px) */
+.hamburger {
+  padding: 10px;
+  margin-right: -6px;
+}
 
-/* ---------- HERO ---------- */
+/* ---------- MOBILE MENU ---------- */
+/* Old version centred everything with justify-content:center, so on a short
+   phone the top links were pushed off-screen and could not be scrolled to.
+   The ::before/::after spacers keep it centred but let it scroll when tall. */
+.mobile-menu {
+  justify-content: flex-start;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 88px 20px 40px;
+  gap: 24px;
+}
+.mobile-menu::before,
+.mobile-menu::after {
+  content: "";
+  flex: 1 1 0;
+}
+/* links were clamp(0.8rem, 3vw, ...) = ~13px on a phone. Far too small. */
+.mobile-menu a {
+  font-size: clamp(1.15rem, 5.5vw, 1.6rem);
+}
+
+/* ---------- INNER-PAGE HERO (about, services, blog, ...) ---------- */
+/* same bug as the home hero: content could slide under the fixed navbar */
+.page-hero {
+  padding-top: calc(var(--nav-h, 72px) + 24px);
+}
+
+/* ---------- HOME HERO ---------- */
+/* (main hero rules live in home.css; the old 65svh override was removed
+   because it fought with them) */
 @media (max-width: 768px) {
-  .hero-headline {
-    font-size: clamp(2.2rem, 9vw, 3.4rem);
-  }
   .hero-sub {
-    font-size: 0.85rem;
-    padding: 0 8px;
+    font-size: 0.9rem;
+    padding: 0 4px;
   }
   .hero-badge {
-    font-size: 0.58rem;
-    padding: 6px 16px;
+    font-size: 0.66rem; /* was 0.58rem (~9px), hard to read */
   }
 }
 
-/* Search bar: stack fields vertically instead of squeezing them */
-@media (max-width: 640px) {
-  .hero-search {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 16px;
-  }
-  .search-field-wrap {
-    flex: 1 1 auto;
-    width: 100%;
-  }
-  .search-go {
-    width: 100%;
-  }
-  .search-go .btn {
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  #hero {
-    min-height: 65svh;
-  }
-  .hero-actions {
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-  }
-  .hero-actions .btn {
-    width: 100%;
+/* ---------- FORMS: stop iOS Safari zooming in on focus ---------- */
+/* Safari zooms the whole page when an input's font-size is under 16px,
+   which looks like the site is "not responsive" after tapping a field. */
+@media (max-width: 768px) {
+  input,
+  select,
+  textarea,
+  .form-input,
+  .sf-input {
+    font-size: 16px;
   }
 }
 
@@ -87,7 +120,7 @@ html, body {
     font-size: clamp(1.7rem, 8vw, 2.4rem);
   }
   .section-sub {
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     padding: 0 4px;
   }
   .section-pad {
@@ -95,14 +128,26 @@ html, body {
   }
 }
 
-/* ---------- SERVICES GRID (tablet gap fix) ---------- */
-@media (max-width: 900px) and (min-width: 541px) {
-  .services-grid {
-    grid-template-columns: 1fr;
+/* ---------- TOUCH DEVICES ---------- */
+/* Hover-only effects never run properly on phones: cards get "stuck" raised
+   after a tap, and captions / social links hidden until hover are unreachable. */
+@media (hover: none) {
+  .glass-card:hover,
+  .pkg-card:hover,
+  .service-card:hover,
+  .counter-card:hover {
+    transform: none;
+  }
+  .team-hover-overlay {
+    opacity: 1;
+    transform: none;
+  }
+  .g-overlay {
+    opacity: 1;
   }
 }
 
-/* ---------- COUNTERS (extra tightening on very small phones) ---------- */
+/* ---------- COUNTERS ---------- */
 @media (max-width: 380px) {
   .counter-num {
     font-size: 2.1rem;
@@ -136,13 +181,51 @@ html, body {
 }
 
 /* ---------- TESTIMONIALS ---------- */
+/* old rule set padding to 20px 14px, which put the arrows back on top of the
+   quote. Keep side padding so text clears the 36px arrows. */
 @media (max-width: 480px) {
   .t-card {
-    padding: 20px 14px;
+    padding: 20px 44px;
+  }
+  .t-btn {
+    width: 36px;
+    height: 36px;
   }
   .t-text {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
   }
+}
+
+/* ---------- ABOUT ---------- */
+@media (max-width: 380px) {
+  .about-badges {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- CONTACT ---------- */
+/* flex children need min-width:0 or long emails / URLs push the card wider
+   than the screen */
+.info-card div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+/* between 561px and 900px the info column is full-width, so use 2 columns */
+@media (max-width: 900px) and (min-width: 561px) {
+  .info-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 380px) {
+  .social-links {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- GALLERY LIGHTBOX ---------- */
+#lb-img {
+  max-height: 88vh; /* fallback */
+  max-height: 88dvh;
 }
 
 /* ---------- CTA STRIP ---------- */
@@ -157,6 +240,11 @@ html, body {
 }
 
 /* ---------- FOOTER ---------- */
+@media (max-width: 768px) {
+  .footer-brand {
+    grid-column: 1 / -1; /* brand block full width, link columns below */
+  }
+}
 @media (max-width: 480px) {
   .footer-brand p {
     max-width: 100%;
@@ -167,12 +255,12 @@ html, body {
   }
 }
 
-/* ---------- WHATSAPP FLOAT (don't cover content on small screens) ---------- */
+/* ---------- WHATSAPP FLOAT ---------- */
 @media (max-width: 480px) {
   .wa-float {
     width: 48px;
     height: 48px;
-    bottom: 16px;
+    bottom: max(16px, env(safe-area-inset-bottom));
     right: 12px;
   }
 }

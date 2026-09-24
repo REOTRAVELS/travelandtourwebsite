@@ -1,16 +1,20 @@
 @font-face {
   font-family: "Hanora";
-  src: url(./fonts/hanora-regular.otf) format("truetype");
-  font-weight: 20;
+  src: url(./fonts/hanora-regular.otf) format("opentype");
+  font-weight: 400;
+  font-display: swap;
   font-style: normal;
 }
 #hero {
-  min-height: clamp(70vh, 90svh, 90svh);
+  min-height: 90vh; /* fallback */
+  min-height: 90svh;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  /* top padding = fixed header height + breathing room, so content never slides under the navbar */
+  padding-top: calc(var(--nav-h, 72px) + 24px);
   padding-bottom: clamp(60px, 10vh, 120px);
 }
 .hero-bg-wrap {
@@ -192,8 +196,59 @@
 
 @media (max-width: 768px) {
   #hero {
-    min-height: 60svh;
-    padding-bottom: clamp(40px, 7vh, 80px);
+    min-height: 100vh; /* fallback */
+    min-height: 100svh;
+    padding-top: calc(var(--nav-h, 72px) + 20px);
+    /* must be taller than the scroll hint (bottom:28px + ~55px) so it never overlaps the buttons */
+    padding-bottom: 100px;
+  }
+  .hero-badge {
+    margin-bottom: 16px;
+    letter-spacing: 0.22em;
+    padding: 7px 16px;
+  }
+  .hero-headline {
+    font-size: clamp(2.1rem, 10.5vw, 3.2rem);
+  }
+  .hero-sub {
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 420px;
+    margin-top: 24px;
+  }
+  .hero-actions > * {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero-search {
+    margin-top: 24px;
+    flex-direction: column;
+  }
+  .search-field-wrap {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+  .search-go {
+    width: 100%;
+  }
+  .scroll-line {
+    display: none;
+  }
+}
+
+/* short screens (landscape phones, small laptops with big browser chrome) */
+@media (max-height: 560px) {
+  #hero {
+    min-height: auto;
+    padding-bottom: 48px;
+  }
+  .hero-scroll-hint {
+    display: none;
   }
 }
 /* .section-title{
@@ -212,7 +267,7 @@
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(480px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
   gap: clamp(16px, 2.2vw, 28px);
 }
 
@@ -859,11 +914,20 @@
   right: 0;
 }
 @media (max-width: 600px) {
+  .t-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 1.1rem;
+  }
   .t-prev {
-    left: 4px;
+    left: 2px;
   }
   .t-next {
-    right: 4px;
+    right: 2px;
+  }
+  /* keep the quote text clear of the arrows */
+  .t-card {
+    padding-inline: 40px;
   }
 }
 .carousel-dots {
