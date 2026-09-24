@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://reotravels.com/sitemap.xml
