@@ -1,0 +1,178 @@
+/* =========================================================
+   RESPONSIVE FIXES — load this AFTER all your other CSS files
+   (after style.css / hero.css / etc.) so it can override them.
+   Covers: navbar overflow, hero search bar, headline sizing,
+   and general small-screen safety.
+   ========================================================= */
+
+/* Prevent any accidental horizontal scroll site-wide */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ---------- NAVBAR ---------- */
+@media (max-width: 768px) {
+  .nav-academy-btn {
+    display: none !important; /* was left visible, causing overflow on mobile */
+  }
+  #navbar {
+    padding: 0 16px;
+  }
+  .nav-logo-text {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav-logo img {
+    height: 38px;
+  }
+  .nav-logo-text {
+    display: none; /* logo mark only on very small screens */
+  }
+}
+
+/* ---------- HERO ---------- */
+@media (max-width: 768px) {
+  .hero-headline {
+    font-size: clamp(2.2rem, 9vw, 3.4rem);
+  }
+  .hero-sub {
+    font-size: 0.85rem;
+    padding: 0 8px;
+  }
+  .hero-badge {
+    font-size: 0.58rem;
+    padding: 6px 16px;
+  }
+}
+
+/* Search bar: stack fields vertically instead of squeezing them */
+@media (max-width: 640px) {
+  .hero-search {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+  }
+  .search-field-wrap {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+  .search-go {
+    width: 100%;
+  }
+  .search-go .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  #hero {
+    min-height: 65svh;
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .hero-actions .btn {
+    width: 100%;
+  }
+}
+
+/* ---------- SECTION TITLES / GENERAL TEXT ---------- */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: clamp(1.7rem, 8vw, 2.4rem);
+  }
+  .section-sub {
+    font-size: 0.82rem;
+    padding: 0 4px;
+  }
+  .section-pad {
+    padding: 48px 16px;
+  }
+}
+
+/* ---------- SERVICES GRID (tablet gap fix) ---------- */
+@media (max-width: 900px) and (min-width: 541px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- COUNTERS (extra tightening on very small phones) ---------- */
+@media (max-width: 380px) {
+  .counter-num {
+    font-size: 2.1rem;
+  }
+  .counter-card {
+    padding: 20px 16px;
+  }
+}
+
+/* ---------- WHY CHOOSE US ---------- */
+@media (max-width: 480px) {
+  .why-badge {
+    top: 12px;
+    right: 8px;
+    padding: 10px 14px;
+    min-width: 70px;
+  }
+  .why-badge-num {
+    font-size: 1.4rem;
+  }
+}
+
+/* ---------- DESTINATIONS ---------- */
+@media (max-width: 480px) {
+  .dest-city {
+    font-size: 1.1rem;
+  }
+  .dest-overlay {
+    padding: 12px;
+  }
+}
+
+/* ---------- TESTIMONIALS ---------- */
+@media (max-width: 480px) {
+  .t-card {
+    padding: 20px 14px;
+  }
+  .t-text {
+    font-size: 0.92rem;
+  }
+}
+
+/* ---------- CTA STRIP ---------- */
+@media (max-width: 480px) {
+  .cta-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cta-actions .btn {
+    width: 100%;
+  }
+}
+
+/* ---------- FOOTER ---------- */
+@media (max-width: 480px) {
+  .footer-brand p {
+    max-width: 100%;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ---------- WHATSAPP FLOAT (don't cover content on small screens) ---------- */
+@media (max-width: 480px) {
+  .wa-float {
+    width: 48px;
+    height: 48px;
+    bottom: 16px;
+    right: 12px;
+  }
+}
