@@ -4,28 +4,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Travel Blog — Umrah &amp; Hajj Pilgrimage Guides, Visa Tips & Travel Advice</title>
+  <title>Travel Blog &amp; Tips — Visa Guides, Destination Guides & Travel Advice</title>
   <meta name="description"
-    content="Read Umrah & Hajj pilgrimage guides for Nigerians, visa guides, destination recommendations & insider travel advice from the REO Travels blog. Plan your sacred or leisure journey today." />
+    content="Read expert travel tips, visa guides, destination recommendations & insider advice from REO Travels blog. Plan your next adventure today." />
   <meta name="keywords"
-    content="Umrah guide Nigeria, Hajj guide, pilgrimage tips, Umrah visa guide, travel blog, travel tips, destination guides, visa guides, travel advice, travel stories" />
+    content="travel blog, travel tips, destination guides, visa guides, travel advice, travel stories" />
   <meta name="author" content="REO Travels &amp; Tour" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://reotravels.com/blog.html" />
-  <meta property="og:title" content="Travel Blog — Umrah, Hajj Guides & Travel Tips" />
-  <meta property="og:description" content="Umrah & Hajj pilgrimage guides, visa tips, and destination recommendations." />
+  <meta property="og:title" content="Travel Blog &amp; Tips" />
+  <meta property="og:description" content="Expert travel guides, visa tips, and destination recommendations." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://reotravels.com/blog.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="REO Travels Blog — Umrah, Hajj & Travel Guides" />
-  <meta name="twitter:description" content="Umrah & Hajj pilgrimage guides, visa tips and destination recommendations." />
-  <link rel="icon" href="asset/logo.png?v=1" type="image/png" />
-  <link rel="apple-touch-icon" href="asset/logo.png" />
-  <link rel="stylesheet" href="css/shared.css" />
-  <link rel="stylesheet" href="css/blog.css" />
+  <meta name="twitter:title" content="REO Travels Blog" />
+  <link rel="icon" href="../asset/logo.png?v=1" type="image/png" />
+  <link rel="apple-touch-icon" href="../asset/logo.png" />
+  <link rel="stylesheet" href="../css/shared.css" />
+  <link rel="stylesheet" href="../css/blog.css" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
   <style>
-    /* Blog article modal overlay */
+    /* Blog modal styles */
     .blog-modal-overlay {
       position: fixed;
       inset: 0;
@@ -177,13 +175,58 @@
       flex: 1 1 200px;
     }
 
-    /* Blog card clickable */
     .blog-card {
       cursor: pointer;
     }
 
     .blog-featured {
       cursor: pointer;
+    }
+
+    /* Skeleton loader */
+    .skel {
+      background: rgba(255, 255, 255, .06);
+      border-radius: 8px;
+      animation: shimmer 1.4s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+
+      0%,
+      100% {
+        opacity: .5
+      }
+
+      50% {
+        opacity: 1
+      }
+    }
+
+    .skel-feat {
+      height: 320px;
+      margin-bottom: 40px;
+    }
+
+    .skel-card {
+      height: 280px;
+    }
+
+    /* Empty state */
+    .blog-empty {
+      text-align: center;
+      padding: 80px 20px;
+      color: rgba(255, 255, 255, .3);
+    }
+
+    .blog-empty h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      color: rgba(255, 255, 255, .45);
+    }
+
+    .blog-empty p {
+      font-size: .875rem;
     }
   </style>
 </head>
@@ -202,7 +245,7 @@
     </div>
   </section>
 
-  <div class="marquee-strip" aria-hidden="true">
+  <!-- <div class="marquee-strip" aria-hidden="true">
     <div class="marquee-inner">
       <span>Travel Tips</span><span>Destination Guides</span><span>Visa Advice</span><span>Travel
         Stories</span><span>Luxury Stays</span>
@@ -211,7 +254,7 @@
       <span>Travel Tips</span><span>Destination Guides</span><span>Visa Advice</span><span>Travel
         Stories</span><span>Luxury Stays</span>
     </div>
-  </div>
+  </div> -->
 
   <section class="section-pad blog-section">
     <div class="container">
@@ -222,748 +265,182 @@
         </p>
       </div>
 
-      <!-- FEATURED -->
-      <div class="blog-featured" data-aos="fade-up" data-aos-delay="80" data-modal="schengen">
-        <div class="bf-img-wrap">
-          <img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=1000&q=80"
-            alt="Travel Guides & Destination Insights" />
-        </div>
-        <div class="bf-content">
-          <span class="blog-tag">✦ Featured</span>
-          <h2 class="bf-title">Travel Guides & Destination Insights: How to Research, Plan, and Arrive Fully Prepared
-          </h2>
-          <p class="bf-excerpt">Most trips go wrong before you even pack. Our consultants reveal the research habits
-            that separate smooth, unforgettable journeys from stressful, expensive ones.</p>
-          <div class="blog-meta">
-            <span>📖 12 min read</span>
-            <span class="blog-read-more">Read Full Article →</span>
-          </div>
+      <!-- Loading skeletons shown while Firebase loads -->
+      <div id="blog-loading">
+        <div class="skel skel-feat"></div>
+        <div class="blog-grid">
+          <div class="skel skel-card"></div>
+          <div class="skel skel-card"></div>
+          <div class="skel skel-card"></div>
         </div>
       </div>
 
-      <!-- GRID -->
-      <div class="blog-grid">
-
-        <div class="blog-card glass-card" data-aos="fade-up" data-aos-delay="0" data-modal="dubai">
-          <div class="bc-img-wrap"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80"
-              alt="Travel Tips & Smart Packing" class="bc-img" /></div>
-          <div class="bc-body">
-            <span class="blog-tag">Travel Tips & Smart Packing</span>
-            <h3 class="bc-title">What Experienced Travellers Always Carry — and What They Always Leave Behind</h3>
-            <p class="bc-excerpt">One overstuffed bag is all it takes to learn this lesson. Here's the packing framework
-              our team swears by.</p>
-            <div class="blog-meta"><span class="blog-read-more">Read More →</span></div>
-          </div>
-        </div>
-
-        <div class="blog-card glass-card" data-aos="fade-up" data-aos-delay="80" data-modal="canadapr">
-          <div class="bc-img-wrap"><img src="https://images.unsplash.com/photo-1485463611174-f302f6a5c1c9?w=600&q=80"
-              alt="Hidden Gems & Must-Visit Places" class="bc-img" /></div>
-          <div class="bc-body">
-            <span class="blog-tag">Hidden Gems & Must-Visit Places</span>
-            <h3 class="bc-title">Africa's Most Underrated Destinations You Should Already Have on Your List</h3>
-            <p class="bc-excerpt">Beyond Cape Town and Cairo lies a continent of extraordinary places most travellers
-              have yet to discover. Our specialists share the ones worth the journey.</p>
-            <div class="blog-meta"><span class="blog-read-more">Read More →</span></div>
-          </div>
-        </div>
-
-        <div class="blog-card glass-card" data-aos="fade-up" data-aos-delay="160" data-modal="maldives">
-          <div class="bc-img-wrap"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80"
-              alt="Travel Stories & Experiences" class="bc-img" /></div>
-          <div class="bc-body">
-            <span class="blog-tag">Travel Stories & Experiences</span>
-            <h3 class="bc-title">What Our Clients Taught Us About the Journeys That Actually Change You</h3>
-            <p class="bc-excerpt">The trips people carry with them for years rarely cost the most. Here's the pattern we
-              keep seeing — and what it means for how you should travel.</p>
-            <div class="blog-meta"><span class="blog-read-more">Read More →</span></div>
-          </div>
-        </div>
-
-        <div class="blog-card glass-card" data-aos="fade-up" data-aos-delay="0" data-modal="zanzibar">
-          <div class="bc-img-wrap"><img src="https://images.unsplash.com/photo-1559734840-f9509ee5677f?w=600&q=80"
-              alt="Visa, Flights & Travel Updates" class="bc-img" /></div>
-          <div class="bc-body">
-            <span class="blog-tag">Visa, Flights & Travel Updates</span>
-            <h3 class="bc-title">The Key Changes Nigerian Travellers Need to Know in 2025</h3>
-            <p class="bc-excerpt">Visa rules shift without notice. These are the updates our team is tracking — and what
-              they mean for your next trip.</p>
-            <div class="blog-meta"><span class="blog-read-more">Read More →</span></div>
-          </div>
-        </div>
-
-        <div class="blog-card glass-card" data-aos="fade-up" data-aos-delay="80" data-modal="documents">
-          <div class="bc-img-wrap"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80"
-              alt="Budget Travel & Luxury Escapes" class="bc-img" /></div>
-          <div class="bc-body">
-            <span class="blog-tag">Budget Travel & Luxury Escapes</span>
-            <h3 class="bc-title">How to Get the Most From Any Travel Budget — Whatever It Is</h3>
-            <p class="bc-excerpt">More money doesn't guarantee a better trip. Smart planning does. Here's how to
-              maximise value at every price point.</p>
-            <div class="blog-meta"><span class="blog-read-more">Read More →</span></div>
-          </div>
-        </div>
-
-        <div class="blog-card glass-card" data-aos="fade-up" data-aos-delay="160" data-modal="umrah">
-          <div class="bc-img-wrap"><img src="https://images.unsplash.com/photo-1590502593747-42a996133562?w=600&q=80"
-              alt="Sacred Journeys" class="bc-img" /></div>
-          <div class="bc-body">
-            <span class="blog-tag">Sacred Journeys</span>
-            <h3 class="bc-title">Performing Umrah from Nigeria: A Step-by-Step Pilgrim's Guide</h3>
-            <p class="bc-excerpt">Visa, vaccinations, what to pack, and when to travel — everything you need to arrive
-              in Makkah ready in body, mind, and spirit.</p>
-            <div class="blog-meta"><span class="blog-read-more">Read More →</span></div>
-          </div>
-        </div>
-
+      <!-- Real content injected here by Firebase -->
+      <div id="blog-content" style="display:none">
+        <div class="blog-featured" id="blog-featured" data-aos="fade-up" data-aos-delay="80"></div>
+        <div class="blog-grid" id="blog-grid"></div>
       </div>
+
+      <!-- Empty state -->
+      <div id="blog-empty" style="display:none">
+        <div class="blog-empty">
+          <h3>No posts yet</h3>
+          <p>New articles are on their way — check back soon.</p>
+        </div>
+      </div>
+
+      <!-- Modals injected dynamically -->
+      <div id="blog-modals"></div>
     </div>
   </section>
-
-  <!-- MODAL: TRAVEL GUIDES & DESTINATION INSIGHTS -->
-  <div class="blog-modal-overlay" id="modal-schengen" role="dialog" aria-modal="true">
-    <div class="blog-modal">
-      <button class="modal-close" aria-label="Close">&times;</button>
-      <span class="modal-tag">✦ Featured · Travel Guides & Destination Insights</span>
-      <h2 class="modal-title">Travel Guides & Destination Insights: How to Research, Plan, and Arrive Fully Prepared
-      </h2>
-      <div class="modal-meta"><span>📖 12 min read</span><span>✍️ REO Travels Team</span></div>
-      <img class="modal-img" src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=900&q=80"
-        alt="Travel Guides & Destination Insights" />
-      <div class="modal-body">
-        <p>A destination guide is only valuable if it tells you what travel actually looks like — not the polished
-          brochure version, not the filtered highlight reel, but the real texture of a place: what the airport is like
-          at 2am, which neighbourhood is genuinely safe versus which just looks good on a map, and what locals think
-          about the tourist circuit that dominates every "top 10" list.</p>
-
-        <p>At REO Travels, we've helped thousands of Nigerians travel internationally over the years. This guide distils
-          what we've learned about how to research a destination properly — before you book anything.</p>
-
-        <h3>Start With the Entry Requirements, Not the Attractions</h3>
-        <p>This sounds obvious, but the single most common source of trip disruption is a document or requirement the
-          traveller discovered too late. Before you research hotels or flights, establish the basics: Does your
-          destination require a visa? How long does it take to obtain? Are there vaccination requirements? Is your
-          passport valid for six months beyond your return date? What is the current travel advisory for your
-          destination?</p>
-        <p>The Nigerian passport grants visa-free or visa-on-arrival access to a growing but still limited number of
-          countries. For most popular destinations — Europe, North America, East Asia — you will need a visa, and the
-          application process takes time. Build that into your planning timeline before anything else.</p>
-
-        <h3>Choosing a Destination That Matches Your Travel Style</h3>
-        <p>Every destination has a personality, and it either matches yours or it doesn't. Dubai rewards travellers who
-          enjoy organised luxury, urban spectacle, and curated experiences. Morocco rewards those who want sensory
-          immersion, history, and negotiation. Zanzibar rewards those who can slow down. The Maldives rewards those who
-          want very little beyond beauty and water. Knowing which kind of traveller you are prevents the expensive
-          mistake of booking the wrong trip.</p>
-        <ul>
-          <li><strong>If you want culture and history:</strong> Egypt, Morocco, Turkey, Ethiopia, India, Portugal</li>
-          <li><strong>If you want natural beauty:</strong> Zanzibar, Maldives, Rwanda, Iceland, Thailand</li>
-          <li><strong>If you want urban energy:</strong> Dubai, London, New York, Istanbul, Singapore</li>
-          <li><strong>If you want beach and relaxation:</strong> Maldives, Seychelles, Zanzibar, Bali, Mauritius</li>
-          <li><strong>If you want short-haul African travel:</strong> Accra, Kigali, Nairobi, Abidjan, Cape Town</li>
-        </ul>
-
-        <h3>Understanding Seasonality</h3>
-        <p>Most destinations have a best time to visit, a shoulder season, and a period to avoid. Travelling in peak
-          season guarantees the best weather but the highest prices and the largest crowds. Shoulder seasons — the weeks
-          immediately before and after peak season — often offer 80% of the experience for 50–60% of the cost.
-          Understanding this pattern for your specific destination can save significant money without materially
-          affecting your experience.</p>
-        <p>For East African destinations like Kenya and Tanzania, the dry seasons (January–March and June–October) align
-          with the best wildlife viewing. For European cities, spring (April–May) and early autumn (September–October)
-          offer the best combination of weather, crowd levels, and prices. For Dubai, November through February is
-          categorically the right time to visit.</p>
-
-        <h3>What a Good Destination Guide Should Tell You</h3>
-        <p>Beyond the attractions checklist, a useful destination guide answers: What is the local currency and can you
-          access it easily? Is tap water safe to drink? What is the tipping culture? What are the local laws that might
-          surprise a visitor (public alcohol consumption, dress codes, photography restrictions)? What does a realistic
-          daily budget look like — not the minimum backpacker budget and not the five-star budget, but a real,
-          comfortable mid-range day?</p>
-        <p>It should also tell you what doesn't work. The restaurant the influencer visited is often not the best
-          restaurant. The "hidden gem" that went viral is no longer hidden. The hotel that got glowing reviews in 2021
-          may have changed management. Always cross-reference guide content with recent traveller reviews, ideally from
-          travellers with a similar profile to your own.</p>
-
-        <h3>How REO Travels Builds Your Destination Brief</h3>
-        <p>For every client booking through REO Travels, we provide a destination brief specific to their itinerary —
-          covering entry requirements, local norms, weather at time of travel, neighbourhood recommendations, and
-          practical logistics. This isn't a generic PDF; it's built around your specific travel dates, accommodation,
-          and interests. Many clients tell us it's one of the most useful things they receive from us.</p>
-
-        <h3>The Most Overlooked Part of Destination Research: What to Do on the Ground</h3>
-        <p>The best travel experiences are almost never the ones that are most heavily promoted. They're the food market
-          a local mentioned at breakfast, the small museum you walked past and decided to enter on a whim, the
-          neighbourhood you explored because your hotel was ten minutes from the main tourist circuit. Leave room in
-          every itinerary for the unplanned. The most memorable travel stories rarely begin with "we booked this three
-          months in advance."</p>
-      </div>
-      <div class="modal-cta">
-        <p>Our team builds personalised destination briefs for every client — entry requirements, local tips, and a
-          curated itinerary tailored to you.</p>
-        <a href="contact.html" class="btn btn-gold">Book a Travel Consultation</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: TRAVEL TIPS & SMART PACKING -->
-  <div class="blog-modal-overlay" id="modal-dubai" role="dialog" aria-modal="true">
-    <div class="blog-modal">
-      <button class="modal-close" aria-label="Close">&times;</button>
-      <span class="modal-tag">Travel Tips & Smart Packing</span>
-      <h2 class="modal-title">Travel Tips & Smart Packing: What Experienced Travellers Always Carry (and What They
-        Always Leave Behind)</h2>
-      <div class="modal-meta"><span>📖 8 min read</span><span>✍️ REO Travels Team</span></div>
-      <img class="modal-img" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=900&q=80"
-        alt="Travel Tips & Smart Packing" />
-      <div class="modal-body">
-        <p>Packing is one of those skills that sounds simple until you're standing at a check-in desk being told your
-          bag is 4kg over the limit, or rummaging through everything at 11pm looking for the one adapter you forgot.
-          After years of watching clients navigate airports and hotels, we've noticed that the most seasoned travellers
-          share a remarkably consistent philosophy: carry less than you think you need, and carry it smarter.</p>
-
-        <p>This guide reflects what actually works — not the aspirational 10-item capsule wardrobe, but practical
-          principles that apply to real trips, especially from Nigeria to international destinations.</p>
-
-        <h3>The Most Important Packing Principle: Luggage Rules First</h3>
-        <p>Before you pull out a single item of clothing, know your airline's baggage allowance — both for checked
-          luggage and carry-on. This is especially critical on multi-leg journeys where different airlines may apply
-          different rules. Many international flights out of Lagos operate under generous allowances, but the connecting
-          flight on a regional carrier may impose a 7kg carry-on restriction that catches travellers off guard. Check
-          every airline on your itinerary, not just the main one.</p>
-        <p>As a general rule: if you can manage your trip in carry-on only, do. You eliminate baggage fees, you
-          eliminate the risk of lost luggage, and you move through airports in a fraction of the time. For trips under
-          two weeks to destinations with easy access to laundry or dry cleaning, carry-on is almost always sufficient.
-        </p>
-
-        <h3>What Every Traveller Should Carry (Always)</h3>
-        <ul>
-          <li><strong>Universal travel adapter:</strong> A good multi-region adapter with at least two USB ports. Not
-            all hotel rooms have accessible sockets, and European, UK, and American plugs are all different from
-            Nigerian ones.</li>
-          <li><strong>Portable power bank (10,000mAh minimum):</strong> Airports drain phones. Long-haul flights drain
-            phones. A reliable power bank means you are never navigating a new city with 3% battery.</li>
-          <li><strong>Compression packing cubes:</strong> These are not optional for organised travellers. They separate
-            clothing categories, compress volume significantly, and make unpacking and repacking exponentially easier.
-            Buy them once; use them forever.</li>
-          <li><strong>Ziplock bags (various sizes):</strong> For toiletries, wet items, snacks, and the inevitable
-            airport security scan. Underrated, underused.</li>
-          <li><strong>A slim cross-body or anti-theft bag:</strong> For documents, cash, and phone in busy city
-            environments. Keeps your passport accessible without putting it in a back pocket or checked luggage.</li>
-          <li><strong>Printed copies of all key documents:</strong> Flight confirmations, hotel bookings, visa
-            documents, travel insurance. Apps fail, batteries die, airports have bad Wi-Fi. Paper doesn't.</li>
-          <li><strong>Reusable water bottle:</strong> Fill it after airport security. Saves money constantly, especially
-            in destinations where bottled water is expensive.</li>
-          <li><strong>Basic medication kit:</strong> Paracetamol, antihistamine, antidiarrheal, plasters, and any
-            personal prescription medication in its original labelled packaging. Airport pharmacies are expensive; not
-            every destination has one.</li>
-        </ul>
-
-        <h3>The Clothing Formula That Actually Works</h3>
-        <p>For a 7–14 day trip, experienced travellers typically pack using the following as a baseline: seven days of
-          underwear and socks (lightweight, quick-dry), three or four versatile bottom pieces (mix of casual and smart
-          casual), five or six tops that work across contexts, one lightweight jacket or layer suitable for both air
-          conditioning and mild outdoor temperature, and one outfit that can serve a formal or semi-formal occasion
-          without being exclusively formal. Everything should be able to mix with everything else.</p>
-        <p>What most people over-pack: shoes. Two pairs solve most travel situations — one comfortable walking shoe and
-          one that can be dressed up. The second pair goes into a shoe bag to prevent it soiling clothing.</p>
-
-        <h3>Smart Packing for Nigerian Travellers Specifically</h3>
-        <p>Nigerian passport holders are statistically more likely to face secondary screening at certain international
-          airports. This is a reality of the current travel environment. Having your documents — visa, return ticket,
-          hotel confirmation, proof of funds — immediately accessible in a clearly organised folder (not buried in your
-          checked luggage) reduces screening time and communicates organisation and preparedness to the officer. First
-          impressions at immigration matter.</p>
-        <p>If you are travelling to a cold destination — Europe in winter, Canada, the UK — take the cold seriously.
-          Layering is more effective than single heavy items: thermal base layer, mid-layer fleece, outer windproof and
-          waterproof jacket. Nigerian body temperatures are calibrated to heat; genuine cold in an unfamiliar
-          environment is uncomfortable in a way that can affect your entire trip.</p>
-
-        <h3>What to Leave Behind</h3>
-        <p>The items that consistently stay behind after one bad experience: hair dryers (hotels almost always have
-          them), full-size toiletry bottles (decant into 100ml travel bottles or buy on arrival), "just in case" outfits
-          that get worn zero times, multiple pairs of jeans (they are heavy, they take forever to dry, and two pairs
-          serve as effectively as four), and physical books (a Kindle or reading app on your phone weighs nothing).</p>
-
-        <h3>The Final Check Before You Zip Up</h3>
-        <p>Lay everything out. Now remove two items you packed "just in case." Now check: passport, visa, flight
-          tickets, accommodation confirmation, travel insurance certificate, yellow fever card (for Nigerian travellers
-          — non-negotiable), adapter, power bank, and any prescription medication. Those items are your non-negotiables.
-          Everything else is negotiable.</p>
-      </div>
-      <div class="modal-cta">
-        <p>Every REO Travels client receives a pre-departure packing checklist specific to their destination and travel
-          type — included with every booking.</p>
-        <a href="contact.html" class="btn btn-gold">Plan My Trip with REO</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: HIDDEN GEMS & MUST-VISIT PLACES -->
-  <div class="blog-modal-overlay" id="modal-canadapr" role="dialog" aria-modal="true">
-    <div class="blog-modal">
-      <button class="modal-close" aria-label="Close">&times;</button>
-      <span class="modal-tag">Hidden Gems & Must-Visit Places</span>
-      <h2 class="modal-title">Hidden Gems & Must-Visit Places: Africa's Most Underrated Destinations You Should Already
-        Have on Your List</h2>
-      <div class="modal-meta"><span>📖 10 min read</span><span>✍️ REO Travels Team</span></div>
-      <img class="modal-img" src="https://images.unsplash.com/photo-1485463611174-f302f6a5c1c9?w=900&q=80"
-        alt="Hidden Gems & Must-Visit Places" />
-      <div class="modal-body">
-        <p>The continent that contains Nigeria is also home to some of the world's most extraordinary travel
-          destinations — and most of them are not on the average Nigerian traveller's radar. Cape Town, Nairobi, and
-          Cairo dominate the conversation, and they are all genuinely worth visiting. But there is a second tier of
-          African destinations that consistently produces the most enthusiastic feedback from our clients: places that
-          are beautiful, accessible, culturally rich, and refreshingly free of the overcrowding that has begun to affect
-          the continent's most famous cities.</p>
-
-        <p>These are the destinations our team recommends when a client says they want to see Africa differently.</p>
-
-        <h3>Kigali, Rwanda — Africa's Most Surprising Capital City</h3>
-        <p>Rwanda's capital is frequently described by first-time visitors as the cleanest, most orderly city they have
-          ever seen in Africa. This is not accidental — it reflects a national commitment to transformation that is
-          visible in everything from the immaculate streets to the quality of the service industry to the remarkable
-          safety record that allows tourists to walk freely at night. Kigali is a city that rewards the curious
-          traveller: the Genocide Memorial is one of the most important and moving historical sites on the continent;
-          the Kimironko Market is the kind of authentic, non-touristy market experience most African cities no longer
-          offer; and the restaurant and hotel scene has matured enormously in recent years.</p>
-        <p>Beyond Kigali, Rwanda's gorilla trekking in Volcanoes National Park is one of Africa's most extraordinary
-          wildlife experiences — and one of the most exclusive, with permits priced to limit numbers and protect the
-          gorilla population. For Nigerian passport holders, Rwanda offers visa on arrival, making it one of the most
-          accessible international destinations on the continent.</p>
-
-        <h3>Diani Beach, Kenya — The Indian Ocean as it Should Be</h3>
-        <p>While most Kenyan travellers head straight for the Maasai Mara, Diani — a 35km stretch of white sand coast
-          about an hour south of Mombasa — has quietly become one of East Africa's finest beach destinations. The water
-          is warm, impossibly blue, and sheltered by a reef that keeps conditions gentle for swimming. The beach is wide
-          enough to never feel crowded. The accommodation options range from backpacker bandas to genuinely luxurious
-          private villas at a fraction of what equivalent properties cost in the Maldives or Seychelles. And the nearby
-          Shimba Hills National Reserve offers the rare combination of coastal forest hiking and wildlife viewing within
-          30 minutes of the beach.</p>
-
-        <h3>Dakar, Senegal — West Africa's Most Cosmopolitan City</h3>
-        <p>Dakar sits at the westernmost point of the African continent, jutting into the Atlantic with an energy that
-          is unlike any other West African capital. It is simultaneously historically significant — Gorée Island, a few
-          kilometres offshore, was one of the primary departure points of the Atlantic slave trade and is now a UNESCO
-          World Heritage Site — and vibrantly contemporary, with a thriving music scene, a growing contemporary art
-          culture, and some of the best seafood on the continent.</p>
-        <p>For Nigerians, Dakar is a fascinating cultural parallel — a major West African city with different colonial
-          and culinary influences, French as the official language, a dominant Muslim identity, and a relaxed, creative
-          atmosphere that many visitors find unexpectedly refreshing. The Pink Lake (Lac Rose), the IFAN Museum of
-          African Arts, and the bustling Sandaga market are among the highlights.</p>
-
-        <h3>The Simien Mountains, Ethiopia — Africa's Roof</h3>
-        <p>Ethiopia is one of Africa's most historically rich countries — the only African nation never colonised, home
-          to one of the world's oldest Christian traditions, and the origin of the coffee plant. The Simien Mountains in
-          the north represent some of the most dramatic highland scenery on the continent: jagged escarpments dropping
-          thousands of metres, Gelada baboons in large troops on the clifftops, and the endemic Ethiopian wolf in the
-          high-altitude moorlands. Trekking in the Simiens is genuinely world-class, and the infrastructure has improved
-          significantly over the past decade.</p>
-
-        <h3>Pemba Island, Tanzania — Zanzibar Without the Crowds</h3>
-        <p>Zanzibar's more famous neighbour gets most of the attention — but Pemba Island, 80km to the north, offers
-          many of the same elements (turquoise water, Swahili culture, coral reefs) with a fraction of the tourist
-          footprint. Pemba is known among divers as one of the finest sites in the Indian Ocean, with pristine reef
-          walls, strong currents that bring large pelagic species, and water visibility that regularly exceeds 30
-          metres. Above water, it is lush and hilly where Zanzibar is flat, with clove and coconut plantations covering
-          the interior. Accommodation options are limited but exceptional for those who seek them out.</p>
-
-        <h3>A Note on Getting There</h3>
-        <p>Most of these destinations are served from Lagos via Nairobi, Addis Ababa, or direct regional routes. Journey
-          times range from 3–8 hours total. REO Travels handles connections, visa requirements, and accommodation for
-          all of these destinations — and for several of them, our regional partnerships allow us to offer pricing that
-          is genuinely competitive with what you'd find booking independently.</p>
-      </div>
-      <div class="modal-cta">
-        <p>Ready to explore Africa beyond the obvious? Our team specialises in building itineraries to the continent's
-          most rewarding and underrated destinations.</p>
-        <a href="contact.html" class="btn btn-gold">Plan My Africa Trip</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: TRAVEL STORIES & EXPERIENCES -->
-  <div class="blog-modal-overlay" id="modal-maldives" role="dialog" aria-modal="true">
-    <div class="blog-modal">
-      <button class="modal-close" aria-label="Close">&times;</button>
-      <span class="modal-tag">Travel Stories & Experiences</span>
-      <h2 class="modal-title">Travel Stories & Experiences: What Our Clients Taught Us About the Journeys That Actually
-        Change You</h2>
-      <div class="modal-meta"><span>📖 7 min read</span><span>✍️ REO Travels Team</span></div>
-      <img class="modal-img" src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=80"
-        alt="Travel Stories & Experiences" />
-      <div class="modal-body">
-        <p>After years of organising travel for thousands of Nigerians — first-timers boarding an international flight
-          for the first time, and seasoned globetrotters who've been to forty countries — we've started noticing
-          patterns in which trips people actually remember. Not just enjoyed at the time, but genuinely carry with them.
-        </p>
-
-        <p>It turns out the formula for a transformative travel experience is more consistent than you'd expect — and it
-          has very little to do with budget.</p>
-
-        <h3>The First International Trip Story (Almost) Everyone Tells</h3>
-        <p>We've heard hundreds of versions of the same story: a client books their first international trip — often
-          Dubai or London — and arrives expecting something dramatic. The country they land in is different, but the
-          first few hours are surprisingly familiar: an airport, a taxi, a hotel. And then something happens. It might
-          be a moment of getting genuinely lost with no data connection. Or eating something they can't identify in a
-          market they stumbled into. Or striking up a conversation with someone whose entire frame of reference is
-          different from theirs. And they return to Nigeria changed in a way that's difficult to articulate but
-          impossible to miss.</p>
-        <p>First international trips are almost always disproportionately significant. They establish that the world is
-          larger and more accessible than it appeared from inside Nigeria's borders — and that realisation tends to
-          compound. Most clients who book their second trip with us do so within six months of their first.</p>
-
-        <h3>The Honeymoon That Becomes the Marriage's Foundation</h3>
-        <p>We organise a significant number of honeymoon trips each year — to the Maldives, Zanzibar, Mauritius, Bali,
-          and elsewhere. What strikes us consistently is that couples return speaking less about the destination's
-          beauty and more about what the shared experience gave their relationship. Navigating a new country together,
-          making decisions about what to do each day, sitting together somewhere genuinely beautiful with no work
-          notifications and no extended family: couples consistently describe honeymoon travel as the period in which
-          they understood what their marriage was going to be.</p>
-        <p>The destination matters less than the design. A well-planned trip that includes the right mix of exploration
-          and genuine rest, private moments and shared experiences, is the goal — not the most expensive resort or the
-          most Instagrammable location.</p>
-
-        <h3>The Solo Trip That Wasn't Supposed to Be Significant</h3>
-        <p>A client — a business owner from Port Harcourt — booked a week in Istanbul through us last year. Primarily a
-          work recalibration trip, she told us when she booked. She wanted to be alone somewhere beautiful and think.
-          She came back and immediately started planning her next three trips. What happened in Istanbul? She walked
-          across the Galata Bridge, ate at a meyhane in Beyoğlu with strangers who insisted she join their table,
-          visited the Süleymaniye Mosque at sunset, and spent an afternoon in a hammam that had been operating for 400
-          years. Nothing dramatic. Everything meaningful.</p>
-        <p>Solo travel has a particular quality that group and couples travel cannot replicate — a vulnerability and
-          openness to unplanned connection that changes how you move through a city. We're increasingly building solo
-          itineraries for clients who want this experience with the logistical safety net of professional support
-          underneath them.</p>
-
-        <h3>The Family Trip That Became a Tradition</h3>
-        <p>Some of our most consistent returning clients are families who took their first international trip together
-          five or eight years ago and have made annual family travel a fixture ever since. What started as a one-off
-          adventure to Accra or Abidjan evolved into a tradition that now defines how their children understand the
-          world. Children who travel internationally young tend to develop a particular kind of curiosity and confidence
-          — an intuition that differences between people and places are interesting rather than threatening.</p>
-
-        <h3>What the Best Travel Experiences Have in Common</h3>
-        <p>Looking across every story our clients have shared with us, the trips that genuinely stay with people tend to
-          share a few characteristics: they include at least one moment of genuine disorientation — something that
-          pushed the traveller outside their familiar operating mode; they involve real connection with the place rather
-          than a curated surface experience; they include enough unscheduled time for the unexpected to happen; and they
-          are approached with openness rather than a fixed agenda of photographs to take and boxes to tick.</p>
-        <p>The most memorable travel experiences are rarely the ones that went exactly to plan. They're the ones where
-          something went slightly sideways and you discovered, somewhat to your own surprise, that you could handle it.
-        </p>
-
-        <h3>Your Story Is Waiting</h3>
-        <p>Every person who has ever had a transformative travel experience was once a person who hadn't yet left. The
-          trip that changes something for you exists — it just hasn't happened yet. Our job is to remove every
-          logistical obstacle between you and that experience.</p>
-      </div>
-      <div class="modal-cta">
-        <p>What kind of travel story do you want to tell? Let our team help you design a trip that delivers it.</p>
-        <a href="contact.html" class="btn btn-gold">Start Planning My Story</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: VISA, FLIGHTS & TRAVEL UPDATES -->
-  <div class="blog-modal-overlay" id="modal-zanzibar" role="dialog" aria-modal="true">
-    <div class="blog-modal">
-      <button class="modal-close" aria-label="Close">&times;</button>
-      <span class="modal-tag">Visa, Flights & Travel Updates</span>
-      <h2 class="modal-title">Visa, Flights & Travel Updates: The Key Changes Nigerian Travellers Need to Know in 2025
-      </h2>
-      <div class="modal-meta"><span>📖 6 min read</span><span>✍️ REO Travels Team</span></div>
-      <img class="modal-img" src="https://images.unsplash.com/photo-1559734840-f9509ee5677f?w=900&q=80"
-        alt="Visa, Flights & Travel Updates" />
-      <div class="modal-body">
-        <p>For Nigerian passport holders, 2025 has brought a mix of developments — some welcome, some requiring
-          immediate awareness. Visa policies shift without warning. New airline routes open while others are suspended.
-          Entry requirements that were relaxed during the post-pandemic recovery period have in some cases been
-          reinstated. Staying current is not optional; it is the difference between a smooth journey and a denied
-          boarding pass.</p>
-
-        <p>Here is what our team is tracking as the most significant updates for Nigerian travellers right now.</p>
-
-        <h3>Schengen Visa: Appointment Backlogs and the New Biometric Requirements</h3>
-        <p>Appointment availability at European embassies in Lagos and Abuja remains a significant bottleneck. Several
-          embassies are operating with backlogs of four to eight weeks for first-available appointments, meaning
-          travellers who begin their application process less than ten weeks before their intended departure date risk
-          missing it entirely even if their application is subsequently approved without issue. If you are planning
-          European travel in 2025, begin the visa process no later than twelve weeks before your travel date.</p>
-        <p>The EU has also been rolling out its new Entry/Exit System (EES), which replaces manual passport stamping
-          with biometric digital registration at Schengen borders. Implementation has been phased and delayed in some
-          countries, but travellers should be aware that additional processing time at points of entry may result as the
-          system becomes active across more Schengen member states.</p>
-
-        <h3>UK Visitor Visa: Important Changes to Financial Evidence Requirements</h3>
-        <p>The UK Home Office has not made headline-level changes to Nigerian visitor visa policy in 2025, but refusal
-          rates remain high and the standard of financial evidence expected has increased in practice. Applications
-          supported by bank statements showing a consistent salary credit pattern from a verifiable employer are
-          performing significantly better than applications relying on large lump-sum balances or business accounts
-          without corroborating documentation. If you are applying for a UK visitor visa, the supporting letter and
-          financial evidence presentation matter as much as the underlying numbers.</p>
-
-        <h3>UAE (Dubai): Visa on Arrival No Longer Available for Nigerian Passports</h3>
-        <p>This is perhaps the most important change for Nigerian travellers to be aware of. Nigerian passport holders
-          previously had access to a visa on arrival facility for the UAE under certain conditions. This arrangement is
-          no longer in effect. All Nigerian passport holders must obtain a UAE tourist visa in advance of travel.
-          Processing through an authorised agent takes three to five working days under normal conditions. Do not book
-          non-refundable flights to Dubai without a confirmed visa in hand.</p>
-
-        <h3>Saudi Arabia Umrah Visa: Expanded Group Travel for Women</h3>
-        <p>Saudi Arabia has continued its policy liberalisation around Umrah travel for women. As of 2024–2025, women of
-          all ages may perform Umrah in organised groups without a mahram (male guardian), provided they travel with a
-          licensed group operator. This has meaningfully expanded access for Nigerian Muslim women who previously faced
-          logistical barriers to performing Umrah independently. REO Travels is authorised to process Umrah visas and
-          operates organised Umrah groups from Lagos throughout the year.</p>
-
-        <h3>Kenya: eVisa System Now Mandatory</h3>
-        <p>Kenya has fully transitioned to a mandatory eVisa system for all travellers, including Nigerian passport
-          holders. Visas on arrival at Jomo Kenyatta International Airport and other Kenyan ports of entry are no longer
-          issued. Applications must be submitted online through the official eCitizen portal before travel. Processing
-          typically takes two to five working days, though peak periods may extend this. The fee is currently USD 50 for
-          a single-entry tourist visa.</p>
-
-        <h3>New Airline Routes and Capacity Updates</h3>
-        <p>Several airlines have adjusted their Nigeria operations in the past year. Ethiopian Airlines has increased
-          frequency on the Lagos–Addis route, improving onward connection options to East African and Asian
-          destinations. Air Peace has continued expanding its international network and now operates direct routes to a
-          growing number of regional and continental destinations. On the other hand, some legacy carriers have reduced
-          capacity on the Lagos–London route, contributing to higher fares than travellers saw in 2022–2023. Booking
-          international flights twelve to sixteen weeks in advance consistently yields the best pricing in the current
-          environment.</p>
-
-        <h3>Yellow Fever Certificate: Don't Forget the Physical Card</h3>
-        <p>This is a perennial issue but worth repeating in 2025. Nigeria is an endemic yellow fever country, and dozens
-          of destination countries require proof of vaccination for Nigerian passport holders. The requirement is
-          specifically for the physical International Certificate of Vaccination — the yellow booklet. Digital records,
-          NHS app entries, or verbal attestation are not accepted at immigration. If you cannot produce a valid, stamped
-          yellow fever card at arrival, you may be denied entry or quarantined. If your card is lost, expired, or was
-          never obtained, address this before you travel — not at the departure gate.</p>
-
-        <h3>Stay Updated Through REO Travels</h3>
-        <p>Our team monitors changes to visa requirements, airline operations, and entry conditions continuously.
-          Clients who book through REO Travels receive updated briefings relevant to their specific destination and
-          travel dates — not generic information that may be months out of date. Travel requirements change faster than
-          any published guide can track; the safest approach is to verify with your travel consultant within 72 hours of
-          departure.</p>
-      </div>
-      <div class="modal-cta">
-        <p>Don't let an avoidable policy change disrupt your trip. Our team stays current so you don't have to — and
-          we'll flag anything that affects your booking.</p>
-        <a href="contact.html" class="btn btn-gold">Talk to Our Visa Team</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: BUDGET TRAVEL & LUXURY ESCAPES -->
-  <div class="blog-modal-overlay" id="modal-documents" role="dialog" aria-modal="true">
-    <div class="blog-modal">
-      <button class="modal-close" aria-label="Close">&times;</button>
-      <span class="modal-tag">Budget Travel & Luxury Escapes</span>
-      <h2 class="modal-title">Budget Travel & Luxury Escapes: How to Get the Most From Any Travel Budget — Whatever It
-        Is</h2>
-      <div class="modal-meta"><span>📖 5 min read</span><span>✍️ REO Travels Team</span></div>
-      <img class="modal-img" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&q=80"
-        alt="Budget Travel & Luxury Escapes" />
-      <div class="modal-body">
-        <p>The biggest misconception in travel planning is that more money automatically means a better experience. In
-          reality, value in travel is almost entirely a function of planning quality — knowing where to spend, where to
-          save, how to time a booking, and which splurges actually change the experience versus which ones simply cost
-          more for equivalent results.</p>
-
-        <p>We work with clients across a wide range of budgets, from first-time travellers managing every naira
-          carefully to high-net-worth individuals for whom cost is secondary to quality and exclusivity. Here is what
-          we've learned about how to maximise travel value at every point on that spectrum.</p>
-
-        <h3>Budget Travel: Where Smart Planning Beats Higher Spending</h3>
-        <p>The most impactful budget decision in international travel is usually the flight — and flight pricing is
-          genuinely dynamic. For most popular long-haul routes from Lagos, fares twelve to sixteen weeks out are
-          consistently lower than fares purchased within six weeks of departure. The savings are not marginal: on
-          Lagos–London or Lagos–Dubai routes, early booking can mean a difference of ₦150,000–300,000 per person on the
-          same airline and routing. If your travel dates have any flexibility, Tuesday and Wednesday departures
-          typically price lower than Friday and Sunday.</p>
-        <p>Budget accommodation is more contextually dependent. In cities like Dubai and Singapore, the hotel tier is
-          visible in the experience — premium-location mid-range hotels genuinely provide a different city experience
-          than out-of-centre budget options. In destinations like Zanzibar or the Maldives, however, a well-reviewed
-          guesthouse on a local island can provide a more authentic and enjoyable experience than a mid-tier resort at
-          three times the price. Know which context you're in before defaulting to the cheapest option.</p>
-
-        <h3>The Budget Moves That Actually Matter</h3>
-        <ul>
-          <li><strong>Book flights early, not accommodation:</strong> Hotel pricing is generally more negotiable and
-            more dynamic than flight pricing. Lock in your flights; negotiate your rooms.</li>
-          <li><strong>Travel in shoulder season:</strong> The six weeks either side of peak season typically offer
-            30–50% savings on accommodation without materially affecting the experience. This is the single
-            highest-return budget decision available for most destinations.</li>
-          <li><strong>Eat where locals eat:</strong> In almost every international destination, the best food is not in
-            tourist-facing restaurants. It's in the street market, the neighbourhood canteen, the lunch spot near the
-            local office district. This is also where you'll have the most interesting experiences.</li>
-          <li><strong>Use airport transfers strategically:</strong> Pre-booking an airport transfer is almost always
-            cheaper than taking a metered taxi or ride-hailing app on arrival, especially in cities where surge pricing
-            or foreign-looking visitors attract premium rates.</li>
-          <li><strong>Consider package bookings:</strong> For destinations like the Maldives, Zanzibar, or Umrah, a
-            properly negotiated package (flights + accommodation + transfers) frequently costs less than booking each
-            component individually, because operators bundle discounts across the chain. REO Travels can demonstrate the
-            comparison on any destination.</li>
-        </ul>
-
-        <h3>Luxury Travel: What Premium Actually Means</h3>
-        <p>In luxury travel, the question is never "how much does it cost?" — it's "does it deliver an experience that
-          justifies the cost?" The most expensive hotel in a city is not automatically the best hotel. The correct
-          question is: what does this property do exceptionally well, and does that align with what I actually want from
-          this trip?</p>
-        <p>For high-end accommodation, the attributes that consistently justify premium pricing are: location (a hotel
-          that puts you within walking distance of what matters genuinely changes the experience), service culture
-          (properties where staff remember your name and anticipate rather than react), and unique physical attributes
-          that cannot be replicated at lower price points — an overwater villa, a rooftop infinity pool with a
-          particular view, a historic building with genuine character.</p>
-
-        <h3>Luxury Experiences Worth Every Naira</h3>
-        <ul>
-          <li><strong>Business class flights on long-haul routes (8+ hours):</strong> The gap between economy and
-            business on a 10-hour flight is the gap between arriving exhausted and arriving functional. For business
-            trips or trips where you need to perform on arrival, this is not an indulgence — it is an investment.</li>
-          <li><strong>Private villa accommodation in the Maldives or Seychelles:</strong> These destinations are built
-            around the private, exclusive experience. Half-measures here rarely satisfy; if the budget allows, a genuine
-            overwater or beachfront villa changes the experience categorically.</li>
-          <li><strong>Private guided tours of major sites:</strong> In Cairo, Rome, Istanbul, or Marrakech, a
-            knowledgeable private guide transforms a sightseeing checklist into a genuine historical and cultural
-            experience. The cost is typically $50–150 for a half day — modest in the context of a serious trip.</li>
-          <li><strong>A once-in-a-kind experience budget:</strong> Gorilla trekking in Rwanda, a seaplane transfer in
-            the Maldives, a private dhow cruise in Zanzibar. These are the moments that define the trip in memory.
-            Building a dedicated budget for one exceptional experience is almost always worth it.</li>
-        </ul>
-
-        <h3>How REO Travels Approaches Value Across Budget Levels</h3>
-        <p>Our job is to build the best possible trip within the budget a client brings us — not to upsell, and not to
-          cut corners that affect the experience. When a client tells us their budget, we work back from what that
-          budget can realistically achieve at their destination, and we are honest when expectations and budget don't
-          align so we can find a solution together. We've built extraordinary trips on very modest budgets, and we've
-          built exceptional luxury experiences for clients who wanted the best. The quality of the planning is the same
-          in both cases.</p>
-      </div>
-      <div class="modal-cta">
-        <p>Tell us your destination, your dates, and your budget. We'll show you exactly what's possible — and how to
-          get the most from every naira you spend.</p>
-        <a href="contact.html" class="btn btn-gold">Get a Trip Quote</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: UMRAH -->
-  <div class="blog-modal-overlay" id="modal-umrah" role="dialog" aria-modal="true">
-    <div class="blog-modal">
-      <button class="modal-close" aria-label="Close">&times;</button>
-      <span class="modal-tag">Sacred Journeys</span>
-      <h2 class="modal-title">Performing Umrah from Nigeria: A Step-by-Step Pilgrim's Guide</h2>
-      <div class="modal-meta"><span>📖 9 min read</span><span>✍️ REO Travels Team</span></div>
-      <img class="modal-img" src="https://images.unsplash.com/photo-1590502593747-42a996133562?w=900&q=80"
-        alt="Umrah Guide" />
-      <div class="modal-body">
-        <p>Umrah is a voluntary act of worship that can be performed at any time of year. Unlike Hajj — which is
-          obligatory for Muslims who are physically and financially able, and takes place on fixed dates in Dhul Hijjah
-          — Umrah carries immense spiritual merit and is accessible to anyone with the means and desire to undertake it.
-          For Nigerian Muslims, it represents one of life's most profound journeys. This guide walks through every
-          practical consideration.</p>
-
-        <h3>The Umrah Visa</h3>
-        <p>Saudi Arabia requires a specific Umrah visa for pilgrims — tourist visas cannot be used to perform Umrah. The
-          visa must be processed through an accredited Umrah operator (known as a licensed travel agent). In Nigeria,
-          these agents are registered with the National Hajj Commission of Nigeria (NAHCON). REO Travels is authorised
-          to process Umrah visas on behalf of pilgrims, handling the full submission to the Saudi consulate.</p>
-        <p>Processing typically takes 7–14 working days. Peak periods — particularly the weeks before Ramadan — can
-          extend this significantly. We strongly recommend beginning your visa process at least 6 weeks before your
-          intended travel date.</p>
-
-        <h3>Required Documents</h3>
-        <ul>
-          <li>Valid international passport with minimum 6 months' validity from the date of return</li>
-          <li>Completed Umrah visa application form</li>
-          <li>Two recent passport photographs (white background, biometric standard, no head covering for men — women
-            should show the face clearly with hijab if worn)</li>
-          <li>Meningitis ACWY vaccination certificate — this is mandatory. Saudi Arabia requires proof of meningococcal
-            vaccination taken no more than 3 years before travel. The vaccination is available at designated government
-            hospitals.</li>
-          <li>Polio vaccination certificate for Nigerian travellers — Nigeria remains on the Saudi polio vaccination
-            requirement list. Proof of polio vaccination (typically in a yellow booklet) must be presented.</li>
-          <li>For women under 45 travelling without a mahram (husband or close male relative): a letter of consent from
-            the mahram and documentation of the group they are travelling with. Saudi Umrah regulations have been
-            significantly relaxed in recent years, and women over 45 can now travel in organised groups without a
-            mahram.</li>
-          <li>Marriage certificate if travelling as a couple (may be requested)</li>
-        </ul>
-
-        <h3>When to Perform Umrah</h3>
-        <ul>
-          <li><strong>Ramadan:</strong> The most spiritually rewarding time. The Prophet (ﷺ) described Umrah during
-            Ramadan as equivalent in reward to Hajj performed with him. Masjid Al-Haram is at its most electric —
-            nightly Tarawih prayers, the sense of collective devotion, and Laylatul Qadr in the final ten nights. It is
-            also the most expensive and most crowded period. Book 4–6 months in advance.</li>
-          <li><strong>Rajab and Sha'ban (the months before Ramadan):</strong> The best balance of spiritual atmosphere
-            and manageable crowds. Prices begin to rise in Sha'ban as Ramadan approaches.</li>
-          <li><strong>Off-peak (Muharram, Safar, Rabi'):</strong> Significantly lower prices, much thinner crowds, and
-            easier access to the Kaaba for tawaf. The spiritual experience is no less valid — and some scholars prefer
-            quieter periods for the focus they allow.</li>
-        </ul>
-
-        <h3>What to Expect on Arrival</h3>
-        <p>Most Nigerian pilgrims fly into Jeddah's King Abdulaziz International Airport (JED), approximately 1 hour's
-          drive from Makkah. Some packages fly into Madinah (MED) and begin in the city of the Prophet (ﷺ) before
-          proceeding to Makkah for Umrah — this sequence allows pilgrims to perform Umrah in a state of spiritual
-          preparation and is considered spiritually beneficial.</p>
-        <p>Upon arrival, your tour operator's representative will meet you, handle immigration and baggage, and
-          transport you directly to your hotel. Hotel proximity to Masjid Al-Haram varies by package — 5-star packages
-          typically place you within 50–200 metres of the Haram, while standard packages may be a 15–20 minute walk. The
-          Makkah Metro (Al-Mashaaer Al-Muqaddassah) and shuttle buses serve pilgrims staying further out.</p>
-
-        <h3>What's Included in Our Umrah Packages</h3>
-        <ul>
-          <li>Return flights from Lagos (LOS) to Jeddah (JED) or Madinah (MED)</li>
-          <li>Full Umrah visa processing</li>
-          <li>Hotel accommodation near Masjid Al-Haram in Makkah (3, 4, or 5-star options)</li>
-          <li>Hotel accommodation near Masjid An-Nabawi in Madinah</li>
-          <li>Airport meet-and-greet and all ground transfers</li>
-          <li>Experienced Nigerian group leader and religious guide throughout the journey</li>
-          <li>Ziyarat (guided visits to historic Islamic sites in Makkah and Madinah)</li>
-        </ul>
-      </div>
-      <div class="modal-cta">
-        <p>May Allah accept your intention. Let REO Travels handle every logistical detail so your mind and heart remain
-          fully present throughout your journey.</p>
-        <a href="contact.html" class="btn btn-gold">Book Your Umrah Package</a>
-      </div>
-    </div>
-  </div>
 
   <div id="footer-placeholder"></div>
   <div id="wa-placeholder"></div>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="js/components.js"></script>
-  <script src="js/shared.js"></script>
-  <script>
-    document.querySelectorAll('[data-modal]').forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        const id = 'modal-' + trigger.dataset.modal;
-        const modal = document.getElementById(id);
-        if (modal) { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  <script src="../js/components.js"></script>
+  <script src="../js/shared.js"></script>
+
+  <!-- Firebase + Blog Renderer -->
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+    import { getFirestore, collection, query, orderBy, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+    // ── Firebase config (hardcoded) ──────────────────────────────────
+    const firebaseConfig = {
+      apiKey: "AIzaSyADn-1fbk6-pzC6fWFWOUm0luHyOIj8yRg",
+      authDomain: "reo-travels-blog.firebaseapp.com",
+      projectId: "reo-travels-blog",
+      storageBucket: "reo-travels-blog.firebasestorage.app",
+      messagingSenderId: "432465752288",
+      appId: "1:432465752288:web:fc0351c16a09d114252085",
+      measurementId: "G-JBVX12GJZQ"
+    };
+
+    const app = initializeApp(firebaseConfig, 'blog-reader');
+    const db = getFirestore(app);
+
+    function esc(s) {
+      return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+    function fmtDate(ts) {
+      if (!ts) return '';
+      const d = ts.toDate ? ts.toDate() : new Date(ts);
+      return d.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
+    }
+
+    function buildModalBody(sections) {
+      return (sections || []).map(s => {
+        if (s.type === 'heading') return `<h3>${esc(s.content)}</h3>`;
+        if (s.type === 'paragraph') return `<p>${esc(s.content)}</p>`;
+        if (s.type === 'bullets') return `<ul>${(s.items || []).map(i => `<li>${esc(i)}</li>`).join('')}</ul>`;
+        return '';
+      }).join('');
+    }
+
+    function renderPosts(posts) {
+      document.getElementById('blog-loading').style.display = 'none';
+
+      if (!posts.length) {
+        document.getElementById('blog-empty').style.display = 'block';
+        return;
+      }
+
+      document.getElementById('blog-content').style.display = 'block';
+
+      const featured = posts.find(p => p.featured) || posts[0];
+      const grid = posts.filter(p => p.id !== featured.id);
+
+      // Featured
+      const featEl = document.getElementById('blog-featured');
+      featEl.dataset.modal = featured.id;
+      featEl.innerHTML = `
+        <div class="bf-img-wrap">
+          ${featured.image ? `<img src="${esc(featured.image)}" alt="${esc(featured.title)}"/>` : ''}
+        </div>
+        <div class="bf-content">
+          <span class="blog-tag">✦ Featured</span>
+          <h2 class="bf-title">${esc(featured.title)}</h2>
+          <p class="bf-excerpt">${esc(featured.excerpt)}</p>
+          <div class="blog-meta">
+            <span>📅 ${fmtDate(featured.createdAt)}</span>
+            ${featured.readtime ? `<span>📖 ${esc(featured.readtime)}</span>` : ''}
+            <span class="blog-read-more">Read Full Article →</span>
+          </div>
+        </div>`;
+
+      // Grid
+      document.getElementById('blog-grid').innerHTML = grid.map(p => `
+        <div class="blog-card glass-card" data-modal="${p.id}">
+          <div class="bc-img-wrap">
+            ${p.image ? `<img class="bc-img" src="${esc(p.image)}" alt="${esc(p.title)}"/>` : ''}
+          </div>
+          <div class="bc-body">
+            <h3 class="bc-title">${esc(p.title)}</h3>
+            <p class="bc-excerpt">${esc(p.excerpt)}</p>
+            <div class="blog-meta">
+              <span>📅 ${fmtDate(p.createdAt)}</span>
+              <span class="blog-read-more">Read More →</span>
+            </div>
+          </div>
+        </div>`).join('');
+
+      // Modals
+      document.getElementById('blog-modals').innerHTML = posts.map(p => `
+        <div class="blog-modal-overlay" id="modal-${p.id}" role="dialog" aria-modal="true">
+          <div class="blog-modal">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            ${p.category ? `<span class="modal-tag">${esc(p.category)}</span>` : ''}
+            <h2 class="modal-title">${esc(p.title)}</h2>
+            <div class="modal-meta">
+              <span>📅 ${fmtDate(p.createdAt)}</span>
+              ${p.readtime ? `<span>📖 ${esc(p.readtime)}</span>` : ''}
+              <span>✍️ REO Travels Team</span>
+            </div>
+            ${p.image ? `<img class="modal-img" src="${esc(p.image)}" alt="${esc(p.title)}"/>` : ''}
+            <div class="modal-body">${buildModalBody(p.sections)}</div>
+            ${(p.ctaText || p.ctaBtn) ? `
+            <div class="modal-cta">
+              ${p.ctaText ? `<p>${esc(p.ctaText)}</p>` : ''}
+              ${p.ctaBtn ? `<a href="contact.html" class="btn btn-gold">${esc(p.ctaBtn)}</a>` : ''}
+            </div>` : ''}
+          </div>
+        </div>`).join('');
+
+      // Bind modal open/close
+      document.querySelectorAll('[data-modal]').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const m = document.getElementById('modal-' + trigger.dataset.modal);
+          if (m) { m.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        });
       });
-    });
-    document.querySelectorAll('.modal-close, .blog-modal-overlay').forEach(el => {
-      el.addEventListener('click', (e) => {
-        if (e.target === el) {
-          document.querySelectorAll('.blog-modal-overlay').forEach(m => m.classList.remove('open'));
+      document.querySelectorAll('.modal-close').forEach(btn => {
+        btn.addEventListener('click', () => {
+          btn.closest('.blog-modal-overlay').classList.remove('open');
           document.body.style.overflow = '';
-        }
+        });
       });
-    });
-    document.querySelectorAll('.modal-close').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.closest('.blog-modal-overlay').classList.remove('open');
-        document.body.style.overflow = '';
+      document.querySelectorAll('.blog-modal-overlay').forEach(el => {
+        el.addEventListener('click', e => {
+          if (e.target === el) { el.classList.remove('open'); document.body.style.overflow = ''; }
+        });
       });
+
+      if (window.AOS) AOS.refresh();
+    }
+
+    // Live listener — updates instantly when posts change
+    const q = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
+    onSnapshot(q, snap => {
+      const posts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      renderPosts(posts);
+    }, err => {
+      console.error('Blog load error:', err);
+      document.getElementById('blog-loading').style.display = 'none';
+      document.getElementById('blog-empty').style.display = 'block';
     });
+
+    // ESC key closes modal
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         document.querySelectorAll('.blog-modal-overlay').forEach(m => m.classList.remove('open'));
