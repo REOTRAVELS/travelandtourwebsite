@@ -232,6 +232,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const contactForm = document.getElementById("contact-form");
   if (contactForm) {
+    // Must match CONFIG.SECRET_TOKEN in the contact-form Apps Script.
+    // (Light check only — it is visible in this file.)
+    const FORM_TOKEN = "REO-FORM-2025-xK9mP3qL";
+
+    // Anti-bot #1: invisible honeypot field (people never see or fill it)
+    const hp = document.createElement("input");
+    hp.type = "text";
+    hp.name = "hp_field";
+    hp.tabIndex = -1;
+    hp.autocomplete = "off";
+    hp.setAttribute("aria-hidden", "true");
+    hp.style.cssText =
+      "position:absolute;left:-9999px;height:0;width:0;opacity:0;";
+    contactForm.appendChild(hp);
+
+    // Anti-bot #2: timestamp of the visitor's first interaction with the form.
+    // Scripts that POST straight to the Apps Script URL never set this, so
+    // the server rejects them.
+    const startedField = document.createElement("input");
+    startedField.type = "hidden";
+    startedField.name = "form_started_at";
+    startedField.value = "";
+    contactForm.appendChild(startedField);
+    const markStarted = () => {
+      if (!startedField.value) startedField.value = String(Date.now());
+    };
+    contactForm.addEventListener("focusin", markStarted);
+    contactForm.addEventListener("input", markStarted);
+
     contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const btn = contactForm.querySelector(".btn-submit");
@@ -242,8 +271,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (error) error.classList.remove("show");
 
       const APPS_SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfycbzObXgp3h-lKoA9Hr_ioLhjLpI3WRGfGRHxWPRHpyBKKL_oiOAnMXLKvb8G9stxeeAiyg/exec";
+        "https://script.google.com/macros/s/AKfycbynu031Rtu4SEjgf2UBHcAaazPTMzCFjYh1tCV6-ktB01Fc1_yQTJul74iC_wM95K-JxQ/exec";
       const payload = Object.fromEntries(new FormData(contactForm).entries());
+      payload._token = FORM_TOKEN;
 
       try {
         await fetch(APPS_SCRIPT_URL, {
@@ -254,11 +284,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         success.classList.add("show");
         contactForm.reset();
+        startedField.value = ""; // next message starts a fresh timer
       } catch (err) {
         if (error) error.classList.add("show");
         else {
           success.classList.add("show");
           contactForm.reset();
+          startedField.value = "";
         }
       } finally {
         btn.textContent = "Send Message →";
